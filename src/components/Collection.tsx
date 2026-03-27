@@ -18,7 +18,7 @@ export default function Collection() {
           {/* Card 1: Aquila Recurve */}
           <div className="snap-center shrink-0 w-[85vw] max-w-[340px] border border-gold/30 rounded-xl bg-gradient-to-br from-charcoal/50 to-obsidian p-1 overflow-hidden group shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
             <div className="h-48 w-full rounded-t-lg mb-6 relative flex items-center justify-center overflow-hidden">
-               <Image src="/product1.png" alt="Aquila Recurve" fill className="object-cover hover:scale-105 transition-transform duration-700" />
+               <Image src="/Product1.png" alt="Aquila Recurve" fill className="object-cover hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="px-5 pb-6">
               <h5 className="text-gold text-xs font-bold tracking-widest font-sans mb-2 uppercase">The Recurve · Aquila</h5>
@@ -36,7 +36,7 @@ export default function Collection() {
           {/* Card 2: Praetorian Longbow */}
           <div className="snap-center shrink-0 w-[85vw] max-w-[340px] border border-gold/30 rounded-xl bg-gradient-to-br from-charcoal/50 to-obsidian p-1 overflow-hidden group shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
             <div className="h-48 w-full rounded-t-lg mb-6 relative flex items-center justify-center overflow-hidden">
-               <Image src="/product2.png" alt="Praetorian Longbow" fill className="object-cover hover:scale-105 transition-transform duration-700" />
+               <Image src="/Product2.png" alt="Praetorian Longbow" fill className="object-cover hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="px-5 pb-6">
               <h5 className="text-gold text-xs font-bold tracking-widest font-sans mb-2 uppercase">The Longbow · Praetorian</h5>
