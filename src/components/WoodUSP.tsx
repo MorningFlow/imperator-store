@@ -30,10 +30,11 @@ export default function WoodUSP() {
         <div className="relative w-full md:w-1/2 h-64 md:h-auto overflow-hidden">
           <video 
             ref={videoRef}
-            src="/Materials.mp4" 
+            src="/plank_fan_out.mp4" 
             className="object-cover w-full h-full"
             muted
             playsInline
+            loop
           />
         </div>
 

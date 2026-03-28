@@ -44,7 +44,8 @@ export default function Header() {
     const targetId = href.replace("#", "");
     const elem = document.getElementById(targetId);
     if (elem) {
-      const headerOffset = 80;
+      const headerElement = document.querySelector('header');
+      const headerOffset = headerElement ? headerElement.offsetHeight : 80;
       const elementPosition = elem.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
       
@@ -57,36 +58,70 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-obsidian/90 to-transparent backdrop-blur-sm">
-        <div className="flex items-center justify-between px-6 py-4">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-obsidian/85 backdrop-blur-md border-b border-charcoal/30 transition-all duration-300">
+        <div className="flex items-center justify-center px-6 py-4 md:py-6 relative max-w-[1400px] mx-auto">
+          {/* Mobile Menu Button */}
           <button 
             onClick={() => setIsOpen(true)}
-            className="text-offwhite hover:text-gold transition-colors" 
+            className="text-offwhite hover:text-gold transition-colors md:hidden absolute left-6" 
             aria-label="Menu"
           >
             <Menu className="w-6 h-6" />
           </button>
-          <Link 
-            href="/" 
-            className="flex items-center" 
-            onClick={(e) => {
-              setIsOpen(false);
-              if (pathname === "/") {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }
-            }}
-          >
-            <Image 
-              src="/logo.png" 
-              alt="Imperator Bows Logo" 
-              width={200} 
-              height={60} 
-              className="h-10 w-auto object-contain drop-shadow" 
-              priority
-            />
-          </Link>
-          <div className="w-6 h-6" /> {/* Spacer for centering */}
+          
+          {/* Desktop Navigation (Left) */}
+          <nav className="hidden md:flex flex-1 justify-end items-center gap-6 lg:gap-10 mr-6 lg:mr-16">
+            {navLinks.slice(0, 3).map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleScroll(e, link.href)}
+                className="text-[10px] font-sans font-semibold uppercase tracking-[0.25em] text-offwhite/70 hover:text-gold transition-colors relative group py-1"
+              >
+                {link.name}
+                <span className="absolute bottom-0 left-1/2 w-0 h-[1px] bg-gold group-hover:w-full group-hover:left-0 transition-all duration-300 ease-in-out"></span>
+              </a>
+            ))}
+          </nav>
+
+          {/* Logo */}
+          <div className="flex-shrink-0 flex justify-center z-10">
+            <Link 
+              href="/" 
+              className="flex items-center" 
+              onClick={(e) => {
+                setIsOpen(false);
+                if (pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+            >
+              <Image 
+                src="/logo.png" 
+                alt="Imperator Bows Logo" 
+                width={200} 
+                height={60} 
+                className="h-9 md:h-12 w-auto object-contain drop-shadow" 
+                priority
+              />
+            </Link>
+          </div>
+
+          {/* Desktop Navigation (Right) */}
+          <nav className="hidden md:flex flex-1 justify-start items-center gap-6 lg:gap-10 ml-6 lg:ml-16">
+            {navLinks.slice(3, 6).map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleScroll(e, link.href)}
+                className="text-[10px] font-sans font-semibold uppercase tracking-[0.25em] text-offwhite/70 hover:text-gold transition-colors relative group py-1"
+              >
+                {link.name}
+                <span className="absolute bottom-0 left-1/2 w-0 h-[1px] bg-gold group-hover:w-full group-hover:left-0 transition-all duration-300 ease-in-out"></span>
+              </a>
+            ))}
+          </nav>
         </div>
       </header>
 
@@ -171,7 +206,8 @@ export default function Header() {
                 }
                 const elem = document.getElementById("cta");
                 if (elem) {
-                  const headerOffset = 80;
+                  const headerElement = document.querySelector('header');
+                  const headerOffset = headerElement ? headerElement.offsetHeight : 80;
                   const elementPosition = elem.getBoundingClientRect().top;
                   const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                   window.scrollTo({ top: offsetPosition, behavior: "smooth" });

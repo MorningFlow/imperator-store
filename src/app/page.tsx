@@ -38,18 +38,19 @@ export default function Home() {
             <div className="absolute inset-0 bg-obsidian/20 mix-blend-multiply" />
           </div>
 
-          <div className="relative z-20 w-full max-w-md mx-auto mt-auto flex flex-col pb-8">
-            <h2 className="font-serif text-4xl sm:text-5xl text-gold-light mb-4 leading-tight uppercase tracking-wide drop-shadow-lg">
-              Where Legacy<br />
-              Meets the<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-gold-dark font-medium">Kill Shot.</span>
+          <div className="relative z-20 w-full max-w-3xl mr-auto mt-auto flex flex-col pb-8 pl-0 md:pl-10 text-left">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-gold-light mb-4 leading-tight uppercase tracking-wide drop-shadow-lg">
+              You Don&apos;t Hunt<br />
+              for Meat.<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-gold-dark font-medium">You Hunt for the Story.</span>
             </h2>
-            <p className="text-offwhite/80 font-sans text-sm mb-10 w-[85%] leading-relaxed mix-blend-plus-lighter shadow-black drop-shadow">
-              Where Roman Imperial luxury meets modern hunting.
+            <p className="text-offwhite/80 font-sans text-base mb-10 max-w-lg leading-relaxed mix-blend-plus-lighter shadow-black drop-shadow">
+              Most bows get forgotten in the truck.<br />
+              The Imperator gets handed down.
             </p>
             
-            <button className="flex items-center gap-2 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold px-6 py-4 rounded uppercase text-sm tracking-wider w-full justify-center mb-6 shadow-[0_4px_20px_rgba(212,175,55,0.2)] hover:shadow-[0_4px_25px_rgba(212,175,55,0.4)] transition-all active:scale-[0.98]">
-              ORDER YOUR BOW <ArrowRight className="w-5 h-5 font-bold" />
+            <button className="flex items-center gap-2 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold px-8 py-4 rounded uppercase text-sm tracking-wider w-fit justify-center mb-6 shadow-[0_4px_20px_rgba(212,175,55,0.2)] hover:shadow-[0_4px_25px_rgba(212,175,55,0.4)] transition-all active:scale-[0.98]">
+              Build Your Heirloom <ArrowRight className="w-5 h-5 font-bold" />
             </button>
             
             <div className="flex flex-wrap flex-col sm:flex-row items-start sm:items-center gap-x-3 gap-y-2 text-[11px] text-offwhite/70 font-medium tracking-wide">

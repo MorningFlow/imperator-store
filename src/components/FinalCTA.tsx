@@ -1,5 +1,7 @@
+"use client";
 import { ShieldCheck, Crosshair, Award } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function FinalCTA() {
   return (
@@ -23,10 +25,28 @@ export default function FinalCTA() {
           <Image src="/rounded-logo.png" alt="Imperator Icon" fill className="object-contain drop-shadow-lg" />
         </div>
 
-        <h2 className="font-serif text-4xl sm:text-5xl text-offwhite leading-[1.1] mb-6 shadow-black drop-shadow-lg">
-          YOUR BUILD SLOT<br/>
-          IS <span className="text-gold-light">WAITING.</span>
-        </h2>
+        <div className="relative inline-block mx-auto mb-10 p-[1px] rounded-sm overflow-hidden shadow-[0_0_50px_rgba(212,175,55,0.05)]">
+          {/* Revolving edge glow */}
+          <motion.div 
+            className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,transparent_0_240deg,rgba(212,175,55,0.8)_360deg)]"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+          />
+          {/* Text Container */}
+          <div className="relative bg-obsidian/90 backdrop-blur-md px-10 py-8 h-full w-full rounded-sm overflow-hidden">
+            <h2 className="font-serif text-4xl sm:text-5xl text-offwhite leading-[1.1] relative z-20">
+              YOUR BUILD SLOT<br/>
+              IS <span className="text-gold-light">WAITING.</span>
+            </h2>
+
+            {/* Glowing wipe over text */}
+            <motion.div
+              className="absolute inset-y-0 w-1/2 bg-gradient-to-r from-transparent via-gold-light/20 to-transparent z-30 pointer-events-none skew-x-12"
+              animate={{ x: ['-250%', '350%'] }}
+              transition={{ duration: 3, repeat: Infinity, repeatDelay: 1.5, ease: "easeInOut" }}
+            />
+          </div>
+        </div>
         
         <p className="text-offwhite/80 font-sans text-sm mb-10 shadow-black drop-shadow w-full md:w-5/6 mx-auto leading-relaxed">
           Hand-crafted in Texas, every Imperator bow is a commitment to uncompromising excellence. Due to the meticulous, 24-hour labor required for each piece, we only accept a strictly limited number of commissions per month. Secure your place in the forge today.
