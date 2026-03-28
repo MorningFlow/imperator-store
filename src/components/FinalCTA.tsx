@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function FinalCTA() {
   return (
-    <section className="bg-obsidian border-t border-charcoal/30 relative py-32 px-6 flex items-center justify-center overflow-hidden group">
+    <section id="cta" className="bg-obsidian border-t border-charcoal/30 relative py-32 px-6 flex items-center justify-center overflow-hidden group">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-obsidian z-10 pointer-events-none" />
@@ -28,13 +28,34 @@ export default function FinalCTA() {
           IS <span className="text-gold-light">WAITING.</span>
         </h2>
         
-        <p className="text-offwhite/80 font-sans italic text-sm mb-12 shadow-black drop-shadow w-3/4 mx-auto leading-relaxed">
-          Forged in Texas. Reliable now, convenient and modern build slot now.
+        <p className="text-offwhite/80 font-sans text-sm mb-10 shadow-black drop-shadow w-full md:w-5/6 mx-auto leading-relaxed">
+          Hand-crafted in Texas, every Imperator bow is a commitment to uncompromising excellence. Due to the meticulous, 24-hour labor required for each piece, we only accept a strictly limited number of commissions per month. Secure your place in the forge today.
         </p>
 
-        <button className="flex items-center justify-center gap-2 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold px-8 py-4 rounded uppercase text-sm tracking-wider w-full shadow-[0_10px_30px_rgba(212,175,55,0.25)] hover:shadow-[0_10px_40px_rgba(212,175,55,0.4)] transition-all active:scale-[0.98] mx-auto sm:w-3/4">
-          <Crosshair className="w-5 h-5 font-bold" /> CLAIM YOUR BUILD SLOT NOW
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12 w-full text-center">
+          <div className="flex flex-col items-center">
+            <ShieldCheck strokeWidth={1.5} className="w-6 h-6 text-gold mb-3 mx-auto opacity-90" />
+            <h4 className="text-gold-light text-[10px] tracking-[0.2em] font-sans uppercase mb-1 font-bold">Lifetime Warranty</h4>
+            <p className="text-offwhite/50 text-[10px]">Guaranteed for life.</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <Award strokeWidth={1.5} className="w-6 h-6 text-gold mb-3 mx-auto opacity-90" />
+            <h4 className="text-gold-light text-[10px] tracking-[0.2em] font-sans uppercase mb-1 font-bold">Texas Forged</h4>
+            <p className="text-offwhite/50 text-[10px]">Handcrafted in the USA.</p>
+          </div>
+          <div className="flex flex-col items-center">
+             <Crosshair strokeWidth={1.5} className="w-6 h-6 text-gold mb-3 mx-auto opacity-90" />
+            <h4 className="text-gold-light text-[10px] tracking-[0.2em] font-sans uppercase mb-1 font-bold">Precision Tillered</h4>
+            <p className="text-offwhite/50 text-[10px]">Tuned to your exact specs.</p>
+          </div>
+        </div>
+
+        <button className="flex items-center justify-center gap-2 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold px-8 py-4 rounded uppercase text-sm tracking-wider w-full shadow-[0_10px_30px_rgba(212,175,55,0.25)] hover:shadow-[0_10px_40px_rgba(212,175,55,0.4)] transition-all active:scale-[0.98] mx-auto sm:w-3/4 mb-4">
+          <Crosshair className="w-4 h-4 font-bold" /> CLAIM YOUR BUILD SLOT NOW
         </button>
+        <p className="text-offwhite/40 text-[10px] uppercase tracking-widest font-sans mt-2">
+          Subject to current waitlist times.
+        </p>
       </div>
     </section>
   );

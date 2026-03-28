@@ -1,54 +1,38 @@
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaTiktok } from "react-icons/fa6";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
     <footer className="bg-obsidian border-t border-charcoal/50 pt-16 pb-8 px-6 text-sm text-offwhite/60">
       <div className="flex flex-col items-center mb-12">
-        <Image 
-          src="/logo.png" 
-          alt="Imperator Bows Logo" 
-          width={280} 
-          height={80} 
-          className="h-16 w-auto object-contain drop-shadow-lg mb-4 opacity-90" 
-        />
+        <Link href="/" className="cursor-pointer">
+          <Image 
+            src="/logo.png" 
+            alt="Imperator Bows Logo" 
+            width={280} 
+            height={80} 
+            className="h-16 w-auto object-contain drop-shadow-lg mb-4 opacity-90" 
+          />
+        </Link>
         <p className="italic text-offwhite/80 text-center">Forged in Texas. Built for Legends.</p>
       </div>
 
-      <div className="grid grid-cols-4 gap-4 mb-16 text-xs">
-        <div>
-          <h3 className="text-offwhite font-medium mb-3">Home</h3>
-          <ul className="space-y-2">
-            <li><a href="#" className="hover:text-gold transition-colors">About Us</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Responsibility</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Policies</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Careers</a></li>
+      <div className="flex flex-col md:flex-row justify-between mb-16 text-xs text-offwhite/70 max-w-6xl mx-auto w-full px-4 md:px-0">
+        <div className="text-left mb-8 md:mb-0">
+          <h3 className="text-offwhite font-medium mb-3 uppercase tracking-wider text-[10px] text-gold-light">Information</h3>
+          <ul className="space-y-3">
+            <li><a href="/care" className="hover:text-gold transition-colors block">Bow Care Guide</a></li>
+            <li><a href="/warranty" className="hover:text-gold transition-colors block">Limited Warranty</a></li>
+            <li><a href="/legal" className="hover:text-gold transition-colors block">Legal Disclaimer</a></li>
           </ul>
         </div>
-        <div>
-          <h3 className="text-offwhite font-medium mb-3">Company</h3>
-          <ul className="space-y-2">
-            <li><a href="#" className="hover:text-gold transition-colors">Contact</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Bows</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Contact Us</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-offwhite font-medium mb-3">Links</h3>
-          <ul className="space-y-2">
-            <li><a href="#" className="hover:text-gold transition-colors">Affiliate</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Source</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">News</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Terminals</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-offwhite font-medium mb-3">Logs</h3>
-          <ul className="space-y-2">
-            <li><a href="#" className="hover:text-gold transition-colors">Home</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Privacy</a></li>
-            <li><a href="#" className="hover:text-gold transition-colors">Contact</a></li>
+        <div className="text-left md:text-right">
+          <h3 className="text-offwhite font-medium mb-3 uppercase tracking-wider text-[10px] text-gold-light">Contact</h3>
+          <ul className="space-y-3">
+            <li><a href="mailto:imperatorbows@gmail.com" className="hover:text-gold transition-colors block">imperatorbows@gmail.com</a></li>
+            <li>Conroe, TX</li>
+            <li className="italic text-gold/70">Veteran-Owned & Operated</li>
           </ul>
         </div>
       </div>

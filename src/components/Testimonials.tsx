@@ -2,7 +2,7 @@ import { Star } from "lucide-react";
 
 export default function Testimonials() {
   return (
-    <section className="bg-obsidian-light py-24 px-6 border-t border-charcoal/50">
+    <section id="testimonials" className="bg-obsidian-light py-24 px-6 border-t border-charcoal/50">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-16">
           <h4 className="text-gold-dark text-xs font-bold tracking-[0.2em] font-sans mb-4 uppercase">What the Legion Says</h4>

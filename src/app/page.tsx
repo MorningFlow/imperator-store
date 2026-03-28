@@ -16,7 +16,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         {/* Section 1: Hero */}
-        <section className="relative min-h-[95vh] pt-24 pb-12 px-6 flex flex-col justify-end overflow-hidden">
+        <section id="hero" className="relative min-h-[95vh] pt-24 pb-12 px-6 flex flex-col justify-end overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-obsidian/90 to-obsidian z-0" />
           
           {/* Cinematic Ping-Pong Canvas Backgrounds */}

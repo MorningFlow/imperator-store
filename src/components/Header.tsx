@@ -1,25 +1,189 @@
-import { Menu } from "lucide-react";
+"use client";
+
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
+  const navLinks = [
+    { name: "The Collection", href: "#collection" },
+    { name: "Anatomy", href: "#anatomy" },
+    { name: "Materials", href: "#materials" },
+    { name: "Craftsmanship", href: "#craftsmanship" },
+    { name: "Our Heritage", href: "#heritage" },
+    { name: "Testimonials", href: "#testimonials" },
+  ];
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsOpen(false);
+    
+    if (pathname !== "/") {
+      router.push(`/${href}`);
+      return;
+    }
+
+    const targetId = href.replace("#", "");
+    const elem = document.getElementById(targetId);
+    if (elem) {
+      const headerOffset = 80;
+      const elementPosition = elem.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-obsidian/90 to-transparent backdrop-blur-sm">
-      <div className="flex items-center justify-between px-6 py-4">
-        <button className="text-offwhite hover:text-gold transition-colors" aria-label="Menu">
-          <Menu className="w-6 h-6" />
-        </button>
-        <div className="flex items-center">
-          <Image 
-            src="/logo.png" 
-            alt="Imperator Bows Logo" 
-            width={200} 
-            height={60} 
-            className="h-10 w-auto object-contain drop-shadow" 
-            priority
-          />
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-obsidian/90 to-transparent backdrop-blur-sm">
+        <div className="flex items-center justify-between px-6 py-4">
+          <button 
+            onClick={() => setIsOpen(true)}
+            className="text-offwhite hover:text-gold transition-colors" 
+            aria-label="Menu"
+          >
+            <Menu className="w-6 h-6" />
+          </button>
+          <Link 
+            href="/" 
+            className="flex items-center" 
+            onClick={(e) => {
+              setIsOpen(false);
+              if (pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+          >
+            <Image 
+              src="/logo.png" 
+              alt="Imperator Bows Logo" 
+              width={200} 
+              height={60} 
+              className="h-10 w-auto object-contain drop-shadow" 
+              priority
+            />
+          </Link>
+          <div className="w-6 h-6" /> {/* Spacer for centering */}
         </div>
-        <div className="w-6 h-6" /> {/* Spacer for centering */}
-      </div>
-    </header>
+      </header>
+
+      {/* Sidebar Overlay */}
+      <div 
+        className={`fixed inset-0 bg-obsidian/80 backdrop-blur-md z-[60] transition-opacity duration-500 ${
+          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setIsOpen(false)}
+      />
+
+      {/* Sidebar Menu */}
+      <nav 
+        className={`fixed top-0 left-0 bottom-0 w-[85vw] max-w-md bg-obsidian border-r border-gold/10 z-[70] transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="p-6 h-full flex flex-col">
+          <div className="flex items-center justify-between mb-12">
+            <Link 
+              href="/" 
+              onClick={(e) => {
+                setIsOpen(false);
+                if (pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+            >
+              <Image 
+                src="/logo.png" 
+                alt="Imperator Bows Logo" 
+                width={160} 
+                height={48} 
+                className="h-8 w-auto object-contain"
+              />
+            </Link>
+            <button 
+              onClick={() => setIsOpen(false)}
+              className="text-offwhite/70 hover:text-gold transition-colors p-2 rounded-full hover:bg-white/5 active:scale-95"
+              aria-label="Close Menu"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+
+          <div className="flex flex-col gap-6 mt-4 flex-1">
+            {navLinks.map((link, index) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleScroll(e, link.href)}
+                className="group flex items-center gap-4 text-2xl font-serif text-offwhite hover:text-gold transition-colors"
+                style={{
+                  transitionDelay: isOpen ? `${index * 50}ms` : '0ms',
+                  opacity: isOpen ? 1 : 0,
+                  transform: isOpen ? 'translateY(0)' : 'translateY(10px)',
+                  transition: 'all 0.4s ease-out'
+                }}
+              >
+                <span className="w-8 h-[1px] bg-gold/30 group-hover:bg-gold group-hover:w-12 transition-all duration-300"></span>
+                {link.name}
+              </a>
+            ))}
+          </div>
+
+          <div 
+            className="mt-auto pb-8 relative"
+            style={{
+              transitionDelay: isOpen ? `${navLinks.length * 50}ms` : '0ms',
+              opacity: isOpen ? 1 : 0,
+              transform: isOpen ? 'translateY(0)' : 'translateY(10px)',
+              transition: 'all 0.4s ease-out'
+            }}
+          >
+             <button 
+               onClick={(e) => { 
+                setIsOpen(false); 
+                if (pathname !== "/") {
+                  router.push("/#cta");
+                  return;
+                }
+                const elem = document.getElementById("cta");
+                if (elem) {
+                  const headerOffset = 80;
+                  const elementPosition = elem.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                  window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                }
+               }}
+               className="w-full bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold py-4 rounded uppercase text-sm tracking-widest shadow-[0_4px_20px_rgba(212,175,55,0.2)] hover:shadow-[0_4px_25px_rgba(212,175,55,0.4)] transition-all active:scale-[0.98]"
+             >
+               Order Your Bow
+             </button>
+          </div>
+        </div>
+      </nav>
+    </>
   );
 }
