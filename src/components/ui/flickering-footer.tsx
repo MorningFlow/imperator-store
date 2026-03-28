@@ -8,6 +8,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { twMerge } from "tailwind-merge";
 import Image from "next/image";
 import { FaFacebook, FaInstagram, FaYoutube, FaTiktok } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -303,7 +304,7 @@ export const FlickeringFooter = () => {
       <div className="flex flex-col md:flex-row md:items-start justify-between px-10 pt-4 pb-0 max-w-7xl mx-auto w-full relative z-20">
         
         {/* Left Side: Brand */}
-        <div className="flex flex-col items-start justify-start gap-y-4 max-w-sm mx-0">
+        <div className="flex flex-col items-start justify-start gap-y-4 max-w-sm mx-0 w-full md:w-1/3">
           <Link href="/" className="cursor-pointer z-20 group">
             <Image 
               src="/logo.png" 
@@ -334,8 +335,32 @@ export const FlickeringFooter = () => {
           </div>
         </div>
 
+        {/* Middle: Animated Tagline */}
+        <div className="flex flex-col items-center justify-start w-full md:w-1/3 pt-12 md:pt-8 text-center z-20">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="px-4"
+          >
+            <p className="text-[10px] md:text-xs font-sans uppercase tracking-[0.15em] md:tracking-[0.2em] text-gold-light/90 font-bold drop-shadow-[0_0_8px_rgba(212,175,55,0.4)] relative inline-block">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-gold-light via-gold to-white leading-relaxed">
+                Crafted for Those<br className="hidden lg:block"/> Who Never Miss Their Mark.
+              </span>
+              <motion.span 
+                className="absolute -bottom-2 left-[15%] right-[15%] h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent"
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
+              />
+            </p>
+          </motion.div>
+        </div>
+
         {/* Right Side: Links */}
-        <div className="pt-8 md:pt-0 w-full md:w-1/2 z-20">
+        <div className="pt-8 md:pt-0 w-full md:w-1/3 z-20 flex md:justify-end">
           <div className="flex flex-col items-start justify-start md:flex-row md:items-start md:justify-end gap-x-16 gap-y-6">
             {siteConfig.footerLinks.map((column, columnIndex) => (
               <ul key={columnIndex} className="flex flex-col gap-y-3">
