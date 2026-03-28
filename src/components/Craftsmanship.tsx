@@ -17,7 +17,7 @@ export default function Craftsmanship() {
 
       <FadeIn className="relative z-10 pt-24 max-w-lg mx-auto">
         <h4 className="text-gold text-xs font-bold tracking-[0.2em] font-sans mb-3 uppercase">The Craft.</h4>
-        <h2 className="font-serif text-4xl sm:text-5xl text-offwhite leading-[1.1] mb-2">24 Hours of Work.</h2>
+        <h2 className="font-serif text-4xl sm:text-5xl text-offwhite leading-[1.1] mb-2">24+ hours of work.</h2>
         <h2 className="font-serif text-4xl sm:text-5xl text-gold-light leading-[1.1] mb-12 italic">A Lifetime of Shots.</h2>
 
         <div className="space-y-8">

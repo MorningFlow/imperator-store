@@ -3,6 +3,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -20,13 +21,14 @@ export interface Testimonial {
   quote?: string;
   initials: string;
   rating: number;
+  avatar?: string;
 }
 
 export interface ClientsSectionProps {
   tagLabel: string;
   title: string;
   description: string;
-  stats: Stat[];
+  stats?: Stat[];
   testimonials: Testimonial[];
   primaryActionLabel: string;
   secondaryActionLabel: string;
@@ -59,10 +61,20 @@ const StickyTestimonialCard = ({ testimonial, index }: { testimonial: Testimonia
         {/* Top section: Initials and Author */}
         <div className="flex items-center gap-4">
           <div
-            className="w-14 h-14 rounded-full bg-gradient-to-br from-gold/40 to-gold-dark flex items-center justify-center flex-shrink-0 border border-gold/50 shadow-inner"
-            aria-label={`Initials of ${testimonial.name}`}
+            className="w-14 h-14 rounded-full bg-gradient-to-br from-gold/40 to-gold-dark flex items-center justify-center flex-shrink-0 border border-gold/50 shadow-inner overflow-hidden"
+            aria-label={`Avatar or Initials of ${testimonial.name}`}
           >
-            <span className="font-serif text-lg text-obsidian font-bold">{testimonial.initials}</span>
+            {testimonial.avatar ? (
+              <Image 
+                src={testimonial.avatar} 
+                alt={testimonial.name} 
+                width={56} 
+                height={56} 
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <span className="font-serif text-lg text-obsidian font-bold">{testimonial.initials}</span>
+            )}
           </div>
           <div className="flex-grow">
             <p className="font-semibold text-lg text-offwhite">{testimonial.name}</p>
@@ -125,11 +137,13 @@ export const ClientsSection = ({
 
           <h2 className="text-4xl md:text-5xl font-serif text-offwhite tracking-tight">{title}</h2>
           <p className="text-lg text-offwhite/70">{description}</p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-            {stats.map((stat) => (
-              <StatCard key={stat.label} {...stat} />
-            ))}
-          </div>
+          {stats && stats.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+              {stats.map((stat) => (
+                <StatCard key={stat.label} {...stat} />
+              ))}
+            </div>
+          )}
           <div className="flex flex-wrap items-center gap-4 mt-6">
             <Button variant="outline" size="lg" className="rounded border-gold/50 text-gold hover:bg-gold/10 hover:text-gold-light transition-colors uppercase font-bold tracking-wider">{secondaryActionLabel}</Button>
             <Button size="lg" className="rounded bg-gradient-to-r from-gold-light to-gold text-obsidian hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all font-bold uppercase tracking-wider">{primaryActionLabel}</Button>

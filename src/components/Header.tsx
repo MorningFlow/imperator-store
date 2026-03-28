@@ -5,12 +5,23 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   
+  // Track scroll for glassmorphism effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   // Prevent body scroll when menu is open
   useEffect(() => {
     if (isOpen) {
@@ -27,12 +38,18 @@ export default function Header() {
     { name: "The Collection", href: "#collection" },
     { name: "Anatomy", href: "#anatomy" },
     { name: "Materials", href: "#materials" },
+    { name: "Gallery", href: "/gallery" },
     { name: "Craftsmanship", href: "#craftsmanship" },
     { name: "Our Heritage", href: "#heritage" },
     { name: "Testimonials", href: "#testimonials" },
   ];
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/")) {
+      setIsOpen(false);
+      return;
+    }
+
     e.preventDefault();
     setIsOpen(false);
     
@@ -58,20 +75,30 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-obsidian/85 backdrop-blur-md border-b border-charcoal/30 transition-all duration-300">
-        <div className="flex items-center justify-center px-6 py-4 md:py-6 relative max-w-[1400px] mx-auto">
+      <header 
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+          isScrolled ? "py-4 md:py-6" : "py-0"
+        )}
+      >
+        <div className={cn(
+          "flex items-center justify-center px-4 md:px-8 transition-all duration-500 relative mx-auto",
+          isScrolled 
+            ? "max-w-[95%] md:max-w-[1100px] lg:max-w-[1240px] bg-obsidian/30 backdrop-blur-xl border border-white/10 rounded-full py-3 md:py-4 mt-2 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]" 
+            : "w-full max-w-full bg-obsidian/85 backdrop-blur-md border-b border-charcoal/30 py-4 md:py-6"
+        )}>
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setIsOpen(true)}
-            className="text-offwhite hover:text-gold transition-colors md:hidden absolute left-6" 
+            className="text-offwhite hover:text-gold transition-colors md:hidden absolute left-8" 
             aria-label="Menu"
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-5 h-5" />
           </button>
           
           {/* Desktop Navigation (Left) */}
           <nav className="hidden md:flex flex-1 justify-end items-center gap-6 lg:gap-10 mr-6 lg:mr-16">
-            {navLinks.slice(0, 3).map((link) => (
+            {navLinks.slice(0, 4).map((link) => (
               <a
                 key={link.name}
                 href={link.href}
@@ -110,7 +137,7 @@ export default function Header() {
 
           {/* Desktop Navigation (Right) */}
           <nav className="hidden md:flex flex-1 justify-start items-center gap-6 lg:gap-10 ml-6 lg:ml-16">
-            {navLinks.slice(3, 6).map((link) => (
+            {navLinks.slice(4, 7).map((link) => (
               <a
                 key={link.name}
                 href={link.href}

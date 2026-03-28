@@ -17,7 +17,7 @@ export default function Home() {
       <main className="flex-1">
         {/* Section 1: Hero */}
         <section id="hero" className="relative min-h-[95vh] pt-24 pb-12 px-6 flex flex-col justify-end overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-obsidian/90 to-obsidian z-0" />
+          <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-obsidian/45 to-obsidian z-0" />
           
           {/* Cinematic Ping-Pong Canvas Backgrounds */}
           <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-obsidian text-gold">
@@ -25,24 +25,24 @@ export default function Home() {
             <ImageSequencePingPong 
               folderPath="/frames-mobile"
               frameCount={145}
-              className="w-full h-full object-cover opacity-90 blur-[0.5px] block md:hidden"
+              className="w-full h-full object-cover opacity-95 blur-[0.5px] block md:hidden"
             />
             {/* Desktop Animation */}
             <ImageSequencePingPong 
               folderPath="/frames-desktop"
-              frameCount={146}
-              className="w-full h-full object-cover opacity-90 blur-[1px] hidden md:block"
+              frameCount={96}
+              className="w-full h-full object-cover opacity-95 blur-[1px] hidden md:block"
             />
             {/* Dark gradient overlay to ensure text legibility */}
-            <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-obsidian/20" />
-            <div className="absolute inset-0 bg-obsidian/20 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-obsidian/10" />
+            <div className="absolute inset-0 bg-obsidian/10 mix-blend-multiply" />
           </div>
 
           <div className="relative z-20 w-full max-w-3xl mr-auto mt-auto flex flex-col pb-8 pl-0 md:pl-10 text-left">
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-gold-light mb-4 leading-tight uppercase tracking-wide drop-shadow-lg">
+            <h2 className="font-serif font-bold text-4xl sm:text-5xl lg:text-6xl text-gold-light mb-4 leading-tight uppercase tracking-wide drop-shadow-lg">
               You Don&apos;t Hunt<br />
               for Meat.<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-gold-dark font-medium">You Hunt for the Story.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-gold-dark font-bold">You Hunt for the Story.</span>
             </h2>
             <p className="text-offwhite/80 font-sans text-base mb-10 max-w-lg leading-relaxed mix-blend-plus-lighter shadow-black drop-shadow">
               Most bows get forgotten in the truck.<br />

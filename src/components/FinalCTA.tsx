@@ -11,12 +11,12 @@ export default function FinalCTA() {
         <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/60 to-obsidian z-10 pointer-events-none" />
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-obsidian to-transparent z-10 pointer-events-none" />
         <div className="absolute inset-0 opacity-50 mix-blend-screen scale-105 group-hover:scale-100 transition-transform duration-[3s] ease-in-out">
-           <Image
-             src="/coloseum.png"
-             alt="Colosseum Background"
-             fill
-             className="object-cover"
-           />
+          <Image
+            src="/coloseum.png"
+            alt="Colosseum Background"
+            fill
+            className="object-cover"
+          />
         </div>
       </div>
 
@@ -27,7 +27,7 @@ export default function FinalCTA() {
 
         <div className="relative inline-block mx-auto mb-10 p-[1px] rounded-sm overflow-hidden shadow-[0_0_50px_rgba(212,175,55,0.05)]">
           {/* Revolving edge glow */}
-          <motion.div 
+          <motion.div
             className="absolute inset-[-150%] bg-[conic-gradient(from_0deg,transparent_0_240deg,rgba(212,175,55,0.8)_360deg)]"
             animate={{ rotate: 360 }}
             transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
@@ -35,7 +35,7 @@ export default function FinalCTA() {
           {/* Text Container */}
           <div className="relative bg-obsidian/90 backdrop-blur-md px-10 py-8 h-full w-full rounded-sm overflow-hidden">
             <h2 className="font-serif text-4xl sm:text-5xl text-offwhite leading-[1.1] relative z-20">
-              YOUR BUILD SLOT<br/>
+              YOUR BUILD SLOT<br />
               IS <span className="text-gold-light">WAITING.</span>
             </h2>
 
@@ -47,9 +47,9 @@ export default function FinalCTA() {
             />
           </div>
         </div>
-        
+
         <p className="text-offwhite/80 font-sans text-sm mb-10 shadow-black drop-shadow w-full md:w-5/6 mx-auto leading-relaxed">
-          Hand-crafted in Texas, every Imperator bow is a commitment to uncompromising excellence. Due to the meticulous, 24-hour labor required for each piece, we only accept a strictly limited number of commissions per month. Secure your place in the forge today.
+          Hand-crafted in Texas, every Imperator bow is a commitment to uncompromising excellence. Due to the meticulous, 24+ hours of work required for each piece, we only accept a strictly limited number of commissions per month. Secure your place in the forge today.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12 w-full text-center">
@@ -64,7 +64,7 @@ export default function FinalCTA() {
             <p className="text-offwhite/50 text-[10px]">Handcrafted in the USA.</p>
           </div>
           <div className="flex flex-col items-center">
-             <Crosshair strokeWidth={1.5} className="w-6 h-6 text-gold mb-3 mx-auto opacity-90" />
+            <Crosshair strokeWidth={1.5} className="w-6 h-6 text-gold mb-3 mx-auto opacity-90" />
             <h4 className="text-gold-light text-[10px] tracking-[0.2em] font-sans uppercase mb-1 font-bold">Precision Tillered</h4>
             <p className="text-offwhite/50 text-[10px]">Tuned to your exact specs.</p>
           </div>

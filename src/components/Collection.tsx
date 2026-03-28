@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import FadeIn from "./FadeIn";
 
 export default function Collection() {
@@ -21,7 +22,7 @@ export default function Collection() {
           {/* Card 1: Aquila Recurve */}
           <FadeIn delay={0.1} direction="up" className="flex flex-col snap-center shrink-0 w-[85vw] md:w-[340px] border border-gold/30 rounded-xl bg-gradient-to-br from-charcoal/50 to-obsidian p-1 overflow-hidden group shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
             <div className="h-48 w-full rounded-t-lg mb-6 relative flex items-center justify-center overflow-hidden shrink-0">
-               <Image src="/Product1.png" alt="Aquila Recurve" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+               <Image src="/collection-1.jpg" alt="Aquila Recurve" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="px-5 pb-6 flex flex-col flex-1">
               <h5 className="text-gold text-xs font-bold tracking-widest font-sans mb-2 uppercase">Compact Recurve · 56"</h5>
@@ -42,7 +43,7 @@ export default function Collection() {
           {/* Card 2: Praetorian Longbow */}
           <FadeIn delay={0.2} direction="up" className="flex flex-col snap-center shrink-0 w-[85vw] md:w-[340px] border border-gold/30 rounded-xl bg-gradient-to-br from-charcoal/50 to-obsidian p-1 overflow-hidden group shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
             <div className="h-48 w-full rounded-t-lg mb-6 relative flex items-center justify-center overflow-hidden shrink-0">
-               <Image src="/Product2.png" alt="Praetorian Longbow" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+               <Image src="/collection-2.jpg" alt="Praetorian Longbow" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="px-5 pb-6 flex flex-col flex-1">
               <h5 className="text-gold text-xs font-bold tracking-widest font-sans mb-2 uppercase">Hybrid Longbow · 58"</h5>
@@ -62,8 +63,8 @@ export default function Collection() {
 
           {/* Card 3: Acies Triplex */}
           <FadeIn delay={0.3} direction="up" className="flex flex-col snap-center shrink-0 w-[85vw] md:w-[340px] border border-gold/30 rounded-xl bg-gradient-to-br from-charcoal/50 to-obsidian p-1 overflow-hidden group shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-            <div className="h-48 w-full rounded-t-lg mb-6 relative flex items-center justify-center overflow-hidden shrink-0 bg-obsidian border-b border-charcoal">
-               <Image src="/logo.png" alt="Acies Triplex Recurve" width={120} height={40} className="object-contain opacity-50 drop-shadow-lg" />
+            <div className="h-48 w-full rounded-t-lg mb-6 relative flex items-center justify-center overflow-hidden shrink-0">
+               <Image src="/collection-3.jpg" alt="Acies Triplex Recurve" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="px-5 pb-6 flex flex-col flex-1">
               <h5 className="text-gold text-xs font-bold tracking-widest font-sans mb-2 uppercase">Takedown Recurve</h5>
@@ -81,6 +82,38 @@ export default function Collection() {
             </div>
           </FadeIn>
 
+        </div>
+      </div>
+      
+      {/* Gallery Preview Section */}
+      <div className="mt-24 max-w-6xl mx-auto border-t border-charcoal/30 pt-16">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
+          <div className="text-left">
+            <h4 className="text-gold text-xs font-bold tracking-[0.2em] font-sans mb-3 uppercase">Visual Heritage</h4>
+            <h2 className="font-serif text-3xl text-offwhite uppercase tracking-wider">The Gallery</h2>
+          </div>
+          <Link 
+            href="/gallery" 
+            className="group flex items-center gap-2 text-gold-light hover:text-gold transition-colors text-xs font-bold tracking-widest uppercase border-b border-gold/20 pb-1"
+          >
+            Explore Full Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+        
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[10, 11, 12, 13].map((num, i) => (
+            <FadeIn key={i} delay={0.1 * i} direction="up" className="aspect-square relative overflow-hidden rounded-lg border border-charcoal group">
+              <Image 
+                src={`/gallery/whatsapp/workshop-${num}.jpg`} 
+                alt={`Gallery Preview ${i + 1}`} 
+                fill 
+                className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                <span className="text-[10px] text-gold-light tracking-widest uppercase font-bold">Detail View</span>
+              </div>
+            </FadeIn>
+          ))}
         </div>
       </div>
     </section>
