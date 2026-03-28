@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
 import { Inter, Cinzel } from "next/font/google";
+import type { Metadata } from "next";
 import "./globals.css";
+import LoadingWrapper from "@/components/LoadingWrapper";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,7 +31,9 @@ export default function RootLayout({
       className={`${inter.variable} ${cinzel.variable} h-full antialiased bg-obsidian text-offwhite`}
     >
       <body className="min-h-full flex flex-col font-sans overflow-x-hidden selection:bg-gold/30 selection:text-gold-light">
-        {children}
+        <LoadingWrapper>
+          {children}
+        </LoadingWrapper>
       </body>
     </html>
   );
