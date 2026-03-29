@@ -49,7 +49,7 @@ export default function FinalCTA() {
         </div>
 
         <p className="text-offwhite/80 font-sans text-sm mb-10 shadow-black drop-shadow w-full md:w-5/6 mx-auto leading-relaxed">
-          Hand-crafted in Texas, every Imperator bow is a commitment to uncompromising excellence. Due to the meticulous, 24+ hours of work required for each piece, we only accept a strictly limited number of commissions per month. Secure your place in the forge today.
+          Hand-crafted in Texas, every Imperator bow is a commitment to uncompromising excellence. Due to the meticulous, 30+ hours of work required for each piece, we only accept a strictly limited number of commissions per month. Secure your place in the forge today.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12 w-full text-center">
