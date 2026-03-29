@@ -97,7 +97,7 @@ export default function FinalCTA() {
         </div>
 
         <button 
-          onClick={openBuildModal}
+          onClick={() => openBuildModal()}
           className="flex items-center justify-center gap-2 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold px-8 py-4 rounded uppercase text-sm tracking-wider w-full shadow-[0_10px_30px_rgba(174,145,66,0.25)] hover:shadow-[0_10px_40px_rgba(174,145,66,0.4)] transition-all active:scale-[0.98] mx-auto sm:w-3/4 mb-4"
         >
           <Crosshair className="w-4 h-4 font-bold" /> CLAIM YOUR BUILD SLOT NOW

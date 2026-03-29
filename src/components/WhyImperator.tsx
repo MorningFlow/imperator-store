@@ -151,7 +151,7 @@ export default function WhyImperator() {
               &ldquo;Other bows are sold. The Imperator is commissioned.&rdquo;
             </p>
             <motion.button
-              onClick={openBuildModal}
+              onClick={() => openBuildModal()}
               whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2.5 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold px-7 py-3.5 rounded-sm uppercase text-[11px] tracking-[0.15em] w-fit shadow-[0_4px_24px_rgba(174,145,66,0.25)] hover:shadow-[0_6px_32px_rgba(174,145,66,0.45)] transition-all duration-300 shrink-0"

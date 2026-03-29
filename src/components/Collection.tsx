@@ -38,7 +38,7 @@ export default function Collection() {
               
               <div className="flex items-center justify-end mt-auto pt-4">
                 <button 
-                  onClick={openBuildModal}
+                  onClick={() => openBuildModal()}
                   className="flex items-center gap-1.5 bg-gradient-to-r from-gold-light to-gold text-obsidian font-bold px-4 py-2 rounded text-[10px] tracking-wider hover:opacity-90 transition-opacity uppercase"
                 >
                   Reserve <ArrowRight className="w-3 h-3" />
@@ -59,7 +59,7 @@ export default function Collection() {
               
               <div className="flex items-center justify-end mt-auto pt-4">
                 <button 
-                  onClick={openBuildModal}
+                  onClick={() => openBuildModal()}
                   className="flex items-center gap-1.5 bg-gradient-to-r from-gold-light to-gold text-obsidian font-bold px-4 py-2 rounded text-[10px] tracking-wider hover:opacity-90 transition-opacity uppercase"
                 >
                   Reserve <ArrowRight className="w-3 h-3" />
