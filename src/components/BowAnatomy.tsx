@@ -39,7 +39,7 @@ export default function BowAnatomy() {
         {/* Section Header */}
         <FadeIn delay={0.1} direction="up" className="mb-4 lg:mb-8 border-b border-charcoal/30 pb-12">
           <span className="text-gold text-xs tracking-[0.4em] uppercase mb-4 block font-medium opacity-80">Finalized Precision</span>
-          <h2 className="font-serif text-4xl lg:text-5xl text-gold-light uppercase tracking-tight mb-6 drop-shadow-[0_4px_15px_rgba(212,175,55,0.2)]">
+          <h2 className="font-serif text-4xl lg:text-5xl text-gold-light uppercase tracking-tight mb-6 drop-shadow-[0_4px_15px_rgba(174,145,66,0.2)]">
             Nothing is<br /> Accidental.
           </h2>
           <p className="font-sans text-sm md:text-base text-offwhite/60 tracking-wide leading-relaxed max-w-sm">

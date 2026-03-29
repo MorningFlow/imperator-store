@@ -11,8 +11,8 @@ const reasons = [
   },
   {
     icon: TreePine,
-    title: "Wood You Can't Find Anywhere Else",
-    text: "Spalted Tamarind. Kingwood. Osage Orange. We source rare exotic hardwoods globally — because what your bow is made of is part of the story you tell.",
+    title: "Wood you can’t just find anywhere else",
+    text: "African Blackwood Burl, Curly Black & White Ebony, Tasmanian Blackwood, Spalted Tamarind. We source rare exotic, luthier grade hardwoods globally — because what your bow is made of is part of the story you tell.",
   },
   {
     icon: Medal,
@@ -61,7 +61,10 @@ const headerVariants: Variants = {
   },
 };
 
+import { useBuildModal } from "@/context/BuildModalContext";
+
 export default function WhyImperator() {
+  const { openBuildModal } = useBuildModal();
   return (
     <section
       id="why-imperator"
@@ -147,14 +150,14 @@ export default function WhyImperator() {
             <p className="text-gold italic font-serif text-lg tracking-wide opacity-80">
               &ldquo;Other bows are sold. The Imperator is commissioned.&rdquo;
             </p>
-            <motion.a
-              href="#cta"
+            <motion.button
+              onClick={openBuildModal}
               whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2.5 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold px-7 py-3.5 rounded-sm uppercase text-[11px] tracking-[0.15em] w-fit shadow-[0_4px_24px_rgba(212,175,55,0.25)] hover:shadow-[0_6px_32px_rgba(212,175,55,0.45)] transition-all duration-300 shrink-0"
+              className="inline-flex items-center gap-2.5 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold px-7 py-3.5 rounded-sm uppercase text-[11px] tracking-[0.15em] w-fit shadow-[0_4px_24px_rgba(174,145,66,0.25)] hover:shadow-[0_6px_32px_rgba(174,145,66,0.45)] transition-all duration-300 shrink-0"
             >
               Claim Your Build Slot <ArrowRight className="w-4 h-4" />
-            </motion.a>
+            </motion.button>
           </motion.div>
         </motion.div>
 

@@ -49,7 +49,8 @@ export const siteConfig = {
       links: [
         { id: 1, title: "Bow Care Guide", url: "/care" },
         { id: 2, title: "Limited Warranty", url: "/warranty" },
-        { id: 3, title: "Legal Disclaimer", url: "/legal" },
+        { id: 3, title: "Build Policy", url: "/policy" },
+        { id: 4, title: "Legal Disclaimer", url: "/legal" },
       ],
     },
     {
@@ -81,7 +82,7 @@ export const FlickeringFooter = () => {
               alt="Imperator Bows Logo" 
               width={220} 
               height={60} 
-              className="h-12 w-auto object-contain drop-shadow-[0_0_15px_rgba(212,175,55,0.2)] opacity-90 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100 group-hover:drop-shadow-[0_0_25px_rgba(212,175,55,0.4)]" 
+              className="h-12 w-auto object-contain drop-shadow-[0_0_15px_rgba(174,145,66,0.2)] opacity-90 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100 group-hover:drop-shadow-[0_0_25px_rgba(174,145,66,0.4)]" 
             />
           </Link>
           <p className="tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-offwhite via-offwhite/80 to-offwhite/40 italic font-serif z-20 text-xs border-l-2 border-gold/50 pl-3 py-0.5">
@@ -90,16 +91,16 @@ export const FlickeringFooter = () => {
           
           {/* Social Links Replacing Badges */}
           <div className="flex items-center gap-4 mt-1 text-gold z-20">
-             <a href="https://www.facebook.com/share/18EbXY1LWm/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-offwhite transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.8)]">
+             <a href="https://www.facebook.com/share/18EbXY1LWm/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-offwhite transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(174,145,66,0.8)]">
                <FaFacebook className="w-5 h-5" />
              </a>
-             <a href="https://www.instagram.com/imperatorbows?igsh=eG9renNyODRiNG9n&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-offwhite transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.8)]">
+             <a href="https://www.instagram.com/imperatorbows?igsh=eG9renNyODRiNG9n&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-offwhite transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(174,145,66,0.8)]">
                <FaInstagram className="w-5 h-5" />
              </a>
-             <a href="#" aria-label="YouTube" className="hover:text-offwhite transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.8)]">
+             <a href="#" aria-label="YouTube" className="hover:text-offwhite transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(174,145,66,0.8)]">
                <FaYoutube className="w-6 h-6 -mt-0.5" />
              </a>
-             <a href="#" aria-label="TikTok" className="hover:text-offwhite transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.8)]">
+             <a href="#" aria-label="TikTok" className="hover:text-offwhite transition-all duration-300 hover:scale-125 hover:drop-shadow-[0_0_8px_rgba(174,145,66,0.8)]">
                <FaTiktok className="w-5 h-5" />
              </a>
           </div>
@@ -114,7 +115,7 @@ export const FlickeringFooter = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="px-4"
           >
-            <p className="text-[10px] md:text-xs font-sans uppercase tracking-[0.15em] md:tracking-[0.2em] text-gold-light/90 font-bold drop-shadow-[0_0_8px_rgba(212,175,55,0.4)] relative inline-block">
+            <p className="text-[10px] md:text-xs font-sans uppercase tracking-[0.15em] md:tracking-[0.2em] text-gold-light/90 font-bold drop-shadow-[0_0_8px_rgba(174,145,66,0.4)] relative inline-block">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-gold-light via-gold to-white leading-relaxed">
                 Crafted for Those<br className="hidden lg:block"/> Who Never Miss Their Mark.
               </span>

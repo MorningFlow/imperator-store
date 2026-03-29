@@ -6,8 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { useBuildModal } from "@/context/BuildModalContext";
 
 export default function Header() {
+  const { openBuildModal } = useBuildModal();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
@@ -47,7 +49,9 @@ export default function Header() {
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("/")) {
+      e.preventDefault();
       setIsOpen(false);
+      router.push(href);
       return;
     }
 
@@ -226,22 +230,11 @@ export default function Header() {
             }}
           >
              <button 
-               onClick={(e) => { 
+               onClick={() => { 
                 setIsOpen(false); 
-                if (pathname !== "/") {
-                  router.push("/#cta");
-                  return;
-                }
-                const elem = document.getElementById("cta");
-                if (elem) {
-                  const headerElement = document.querySelector('header');
-                  const headerOffset = headerElement ? headerElement.offsetHeight : 80;
-                  const elementPosition = elem.getBoundingClientRect().top;
-                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                  window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-                }
+                openBuildModal();
                }}
-               className="w-full bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold py-4 rounded uppercase text-sm tracking-widest shadow-[0_4px_20px_rgba(212,175,55,0.2)] hover:shadow-[0_4px_25px_rgba(212,175,55,0.4)] transition-all active:scale-[0.98]"
+               className="w-full bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold py-4 rounded uppercase text-sm tracking-widest shadow-[0_4px_20px_rgba(174,145,66,0.2)] hover:shadow-[0_4px_25px_rgba(174,145,66,0.4)] transition-all active:scale-[0.98]"
              >
                Order Your Bow
              </button>

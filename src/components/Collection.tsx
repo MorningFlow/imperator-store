@@ -7,7 +7,10 @@ import Link from "next/link";
 import FadeIn from "./FadeIn";
 import Lightbox from "./ui/Lightbox";
 
+import { useBuildModal } from "@/context/BuildModalContext";
+
 export default function Collection() {
+  const { openBuildModal } = useBuildModal();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
@@ -35,7 +38,7 @@ export default function Collection() {
               
               <div className="flex items-center justify-end mt-auto pt-4">
                 <button 
-                  onClick={() => { const elem = document.getElementById("cta"); if (elem) elem.scrollIntoView({ behavior: "smooth" }); }}
+                  onClick={openBuildModal}
                   className="flex items-center gap-1.5 bg-gradient-to-r from-gold-light to-gold text-obsidian font-bold px-4 py-2 rounded text-[10px] tracking-wider hover:opacity-90 transition-opacity uppercase"
                 >
                   Reserve <ArrowRight className="w-3 h-3" />
@@ -56,7 +59,7 @@ export default function Collection() {
               
               <div className="flex items-center justify-end mt-auto pt-4">
                 <button 
-                  onClick={() => { const elem = document.getElementById("cta"); if (elem) elem.scrollIntoView({ behavior: "smooth" }); }}
+                  onClick={openBuildModal}
                   className="flex items-center gap-1.5 bg-gradient-to-r from-gold-light to-gold text-obsidian font-bold px-4 py-2 rounded text-[10px] tracking-wider hover:opacity-90 transition-opacity uppercase"
                 >
                   Reserve <ArrowRight className="w-3 h-3" />
@@ -65,14 +68,14 @@ export default function Collection() {
             </div>
           </FadeIn>
 
-          {/* Card 3: Acies Triplex — Coming Soon */}
+          {/* Card 3: Battle Formation — Coming Soon */}
           <FadeIn delay={0.3} direction="up" className="flex flex-col snap-center shrink-0 w-[85vw] md:w-[340px] border border-gold/10 rounded-xl bg-gradient-to-br from-charcoal/30 to-obsidian p-1 overflow-hidden group shadow-[0_10px_30px_rgba(0,0,0,0.5)] opacity-80">
             <div className="h-48 w-full rounded-t-lg mb-6 relative flex items-center justify-center overflow-hidden shrink-0 bg-charcoal/20">
                <div className="absolute inset-0 flex items-center justify-center border-b border-gold/5">
                  <span className="text-gold/40 text-[10px] font-bold tracking-[0.5em] uppercase translate-y-2">Under Development</span>
                </div>
-               <div className="relative z-10 text-gold-light/20 font-serif text-5xl select-none uppercase tracking-tighter opacity-10">
-                 Acies
+               <div className="relative z-10 text-gold-light/20 font-serif text-[40px] select-none uppercase tracking-tighter opacity-10 text-center leading-none px-4">
+                 Battle Formation
                </div>
             </div>
             <div className="px-5 pb-6 flex flex-col flex-1">
@@ -80,8 +83,8 @@ export default function Collection() {
                 <h5 className="text-gold/50 text-xs font-bold tracking-widest font-sans uppercase">Takedown Recurve</h5>
                 <span className="bg-gold/10 text-gold-light text-[8px] font-bold px-2 py-0.5 rounded-full border border-gold/20 tracking-tighter uppercase">Coming Q4</span>
               </div>
-              <h3 className="text-offwhite/50 font-serif text-2xl mb-2">Acies Triplex</h3>
-              <p className="text-offwhite/40 text-xs font-sans mb-6 leading-relaxed">The tactical genius of Rome’s triple battle line, reimagined for the modern archer. A three-piece takedown system currently in the final stages of engineering.</p>
+              <h3 className="text-offwhite/50 font-serif text-xl mb-3 leading-tight uppercase tracking-wide">Rome’s three line battle formation, reimagined…</h3>
+              <p className="text-offwhite/40 text-[10px] font-sans mb-6 leading-relaxed">The tactical genius of the triple battle line, engineered for the modern archer. A high-performance three-piece takedown system currently in the final stages of development.</p>
               
               <div className="flex items-center justify-end mt-auto pt-4">
                 <button 

@@ -32,8 +32,8 @@ export default function Craftsmanship() {
           <FadeIn delay={0.2} direction="left" className="flex items-start gap-6 border-b border-charcoal/50 pb-6 border-l-2 border-l-transparent hover:border-l-gold pl-4 transition-all duration-300">
             <span className="text-gold text-4xl font-serif leading-none shrink-0">02</span>
             <div>
-              <h3 className="text-offwhite text-sm font-bold tracking-widest uppercase mb-1 font-sans">Deposit Secures Build</h3>
-              <p className="text-offwhite/50 text-xs leading-relaxed">A 25% deposit secures your build slot in our forge.</p>
+              <h3 className="text-offwhite text-sm font-bold tracking-widest uppercase mb-1 font-sans">Commission Reservation</h3>
+              <p className="text-offwhite/50 text-xs leading-relaxed">A 40% Commission Reservation secures your build slot and initiates material selection.</p>
             </div>
           </FadeIn>
 
@@ -48,8 +48,8 @@ export default function Craftsmanship() {
           <FadeIn delay={0.4} direction="left" className="flex items-start gap-6 border-l-2 border-l-transparent hover:border-l-gold pl-4 transition-all duration-300">
             <span className="text-gold text-4xl font-serif leading-none shrink-0">04</span>
             <div>
-              <h3 className="text-offwhite text-sm font-bold tracking-widest uppercase mb-1 font-sans">Shipped To Your Door</h3>
-              <p className="text-offwhite/50 text-xs leading-relaxed">Remaining balance is cleared and your bow ships securely, ready for the hunt.</p>
+              <h3 className="text-offwhite text-sm font-bold tracking-widest uppercase mb-1 font-sans">Final Tuning & Shipment</h3>
+              <p className="text-offwhite/50 text-xs leading-relaxed">Remaining balance (40-60%) is cleared. Your bow undergoes final inspection and ships securely.</p>
             </div>
           </FadeIn>
 

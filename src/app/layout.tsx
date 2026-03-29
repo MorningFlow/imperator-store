@@ -2,6 +2,8 @@ import { Inter, Cinzel } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
 import LoadingWrapper from "@/components/LoadingWrapper";
+import { BuildModalProvider } from "@/context/BuildModalContext";
+import BuildModal from "@/components/ui/BuildModal";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -41,11 +43,14 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${cinzel.variable} h-full antialiased bg-obsidian text-offwhite`}
     >
-      <body className="min-h-full flex flex-col font-sans overflow-x-hidden selection:bg-gold/30 selection:text-gold-light">
+    <body className="min-h-full flex flex-col font-sans overflow-x-hidden selection:bg-gold/30 selection:text-gold-light">
+      <BuildModalProvider>
         <LoadingWrapper>
           {children}
         </LoadingWrapper>
-      </body>
+        <BuildModal />
+      </BuildModalProvider>
+    </body>
     </html>
   );
 }

@@ -131,7 +131,7 @@ export const ClientsSection = ({
         {/* Left Column: Sticky Content */}
         <div className="flex flex-col gap-6 lg:sticky lg:top-32">
           <div className="inline-flex items-center gap-2 self-start rounded-full border border-gold/30 bg-gold/5 px-3 py-1 text-xs uppercase tracking-widest font-bold">
-            <div className="h-1.5 w-1.5 rounded-full bg-gold shadow-[0_0_8px_rgba(212,175,55,0.8)]" />
+            <div className="h-1.5 w-1.5 rounded-full bg-gold shadow-[0_0_8px_rgba(174,145,66,0.8)]" />
             <span className="text-gold-light">{tagLabel}</span>
           </div>
 
@@ -146,7 +146,7 @@ export const ClientsSection = ({
           )}
           <div className="flex flex-wrap items-center gap-4 mt-6">
             <Button variant="outline" size="lg" className="rounded border-gold/50 text-gold hover:bg-gold/10 hover:text-gold-light transition-colors uppercase font-bold tracking-wider">{secondaryActionLabel}</Button>
-            <Button size="lg" className="rounded bg-gradient-to-r from-gold-light to-gold text-obsidian hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all font-bold uppercase tracking-wider">{primaryActionLabel}</Button>
+            <Button size="lg" className="rounded bg-gradient-to-r from-gold-light to-gold text-obsidian hover:shadow-[0_0_15px_rgba(174,145,66,0.4)] transition-all font-bold uppercase tracking-wider">{primaryActionLabel}</Button>
           </div>
         </div>
 

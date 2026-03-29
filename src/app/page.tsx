@@ -4,6 +4,7 @@ import BowAnatomy from "@/components/BowAnatomy";
 import WoodUSP from "@/components/WoodUSP";
 import Collection from "@/components/Collection";
 import Craftsmanship from "@/components/Craftsmanship";
+import Pricing from "@/components/Pricing";
 import Heritage from "@/components/Heritage";
 import WhyImperator from "@/components/WhyImperator";
 import Testimonials from "@/components/Testimonials";
@@ -79,7 +80,7 @@ export default function Home() {
             {/* CTA Button */}
             <a
               href="#collection"
-              className="inline-flex items-center gap-2.5 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold px-7 py-3.5 rounded-sm uppercase text-[11px] tracking-[0.15em] w-fit mb-10 shadow-[0_4px_24px_rgba(212,175,55,0.25)] hover:shadow-[0_6px_32px_rgba(212,175,55,0.45)] hover:brightness-110 transition-all duration-300 active:scale-[0.98]"
+              className="inline-flex items-center gap-2.5 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold px-7 py-3.5 rounded-sm uppercase text-[11px] tracking-[0.15em] w-fit mb-10 shadow-[0_4px_24px_rgba(174,145,66,0.25)] hover:shadow-[0_6px_32px_rgba(174,145,66,0.45)] hover:brightness-110 transition-all duration-300 active:scale-[0.98]"
             >
               Build Your Heirloom <ArrowRight className="w-4 h-4" />
             </a>
@@ -87,7 +88,7 @@ export default function Home() {
             {/* Trust Badges */}
             <div className="flex flex-col gap-3">
               {[
-                { label: "25% Deposit to Start" },
+                { label: "40% Deposit to Start" },
                 { label: "Free US Shipping" },
                 { label: "Texas-Made, Lifetime Backed" },
               ].map(({ label }) => (
@@ -104,6 +105,7 @@ export default function Home() {
         <WoodUSP />
         <Collection />
         <Craftsmanship />
+        <Pricing />
         <Heritage />
         <WhyImperator />
         <Testimonials />

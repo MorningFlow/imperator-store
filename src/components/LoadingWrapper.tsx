@@ -7,10 +7,17 @@ import LoadingScreen from "./LoadingScreen";
 export default function LoadingWrapper({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
-  // We want the loader to show for at least 2.5 seconds to fully complete the letters reveal
   useEffect(() => {
+    // Check if we've already shown the loader in this session
+    const hasLoaded = sessionStorage.getItem("hasLoaded");
+    if (hasLoaded) {
+      setIsLoading(false);
+      return;
+    }
+
     const timer = setTimeout(() => {
       setIsLoading(false);
+      sessionStorage.setItem("hasLoaded", "true");
     }, 2800);
 
     return () => clearTimeout(timer);

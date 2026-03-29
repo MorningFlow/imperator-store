@@ -29,7 +29,7 @@ export default function LoadingScreen() {
                 delay: index * 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-gold-light tracking-[-0.05em] drop-shadow-[0_10px_30px_rgba(212,175,55,0.3)]"
+              className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-gold-light tracking-[-0.05em] drop-shadow-[0_10px_30px_rgba(174,145,66,0.3)]"
             >
               {letter}
             </motion.span>
