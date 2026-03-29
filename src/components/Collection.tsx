@@ -7,8 +7,8 @@ import FadeIn from "./FadeIn";
 
 export default function Collection() {
   return (
-    <section id="collection" className="bg-obsidian py-24 px-6 relative border-t border-charcoal/30">
-      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-charcoal/20 to-transparent pointer-events-none" />
+    <section id="collection" className="wood-grain-bg bg-obsidian py-24 px-6 relative border-t border-charcoal/30">
+      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-charcoal/20 to-transparent pointer-events-none z-[1]" />
 
       <FadeIn className="text-center mb-16 relative z-10">
         <h4 className="text-offwhite/40 text-xs font-bold tracking-[0.2em] font-sans mb-3 uppercase">Products</h4>
@@ -16,7 +16,7 @@ export default function Collection() {
         <h2 className="font-serif text-3xl sm:text-4xl text-offwhite leading-tight">Three Models. Zero Compromises.</h2>
       </FadeIn>
 
-      <div className="flex justify-center mx-auto max-w-6xl">
+      <div className="flex justify-center mx-auto max-w-6xl relative z-10">
         <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 px-4 w-full scrollbar-none items-stretch">
           
           {/* Card 1: Aquila Recurve */}
@@ -86,7 +86,7 @@ export default function Collection() {
       </div>
       
       {/* Gallery Preview Section */}
-      <div className="mt-24 max-w-6xl mx-auto border-t border-charcoal/30 pt-16">
+      <div className="mt-24 max-w-6xl mx-auto border-t border-charcoal/30 pt-16 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
           <div className="text-left">
             <h4 className="text-gold text-xs font-bold tracking-[0.2em] font-sans mb-3 uppercase">Visual Heritage</h4>
@@ -102,7 +102,7 @@ export default function Collection() {
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[10, 11, 12, 13].map((num, i) => (
-            <FadeIn key={i} delay={0.1 * i} direction="up" className="aspect-square relative overflow-hidden rounded-lg border border-charcoal group">
+            <FadeIn key={i} delay={0.1 * i} direction="up" className="aspect-square relative overflow-hidden rounded-lg border border-charcoal group bg-obsidian">
               <Image 
                 src={`/gallery/whatsapp/workshop-${num}.jpg`} 
                 alt={`Gallery Preview ${i + 1}`} 

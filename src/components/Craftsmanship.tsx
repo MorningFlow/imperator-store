@@ -3,9 +3,9 @@ import FadeIn from "./FadeIn";
 
 export default function Craftsmanship() {
   return (
-    <section id="craftsmanship" className="bg-obsidian-light py-24 px-6 relative border-t border-charcoal">
+    <section id="craftsmanship" className="wood-grain-bg bg-obsidian-light py-24 px-6 relative border-t border-charcoal">
       {/* Background Image */}
-      <div className="absolute top-0 inset-x-0 h-96 overflow-hidden z-0">
+      <div className="absolute top-0 inset-x-0 h-96 overflow-hidden z-0 bg-obsidian-light">
          <Image 
             src="/the-craft-section.png" 
             alt="The Craft Workbench" 

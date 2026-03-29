@@ -24,6 +24,56 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Vertical wood grain texture — apply to specific sections */
+.wood-grain-bg {
+  position: relative;
+  isolation: isolate;
+}
+.wood-grain-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.015) 0px,
+      transparent 1px,
+      transparent 7px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 13px,
+      rgba(255, 255, 255, 0.01) 13px,
+      transparent 14px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 29px,
+      rgba(255, 255, 255, 0.022) 29px,
+      transparent 30px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 47px,
+      rgba(255, 255, 255, 0.012) 47px,
+      transparent 48px
+    ),
+    url('/wood-grain-bg.png');
+  background-size:
+    7px 100%,
+    14px 100%,
+    30px 100%,
+    48px 100%,
+    512px 512px;
+  background-repeat: repeat;
+  opacity: 0.5;
+}
+
 /* Custom scrollbar for premium look */
 ::-webkit-scrollbar {
   width: 6px;
