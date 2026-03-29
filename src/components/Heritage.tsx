@@ -4,19 +4,19 @@ export default function Heritage() {
   return (
     <section id="heritage" className="bg-obsidian relative min-h-[90svh] md:min-h-screen border-t border-charcoal flex flex-col md:flex-row overflow-hidden pb-16 md:pb-0 pt-20 md:pt-0">
       
-      {/* Left Column: Animation (1/3 area) with "Legal Section" style container */}
+      {/* Left Column: Animation (1/3 area) with "Diffusion" style blending */}
       <div className="relative w-full md:w-1/3 flex items-center justify-center p-6 md:p-12 bg-obsidian">
-        <div className="relative w-full max-w-[340px] aspect-[9/16] rounded-2xl overflow-hidden border border-charcoal/40 shadow-[0_20px_60px_rgba(0,0,0,0.7)] group/video">
+        {/* Glow effect behind the video */}
+        <div className="absolute w-[120%] h-[120%] bg-gold/5 blur-[100px] rounded-full pointer-events-none opacity-40 animate-pulse" />
+        
+        <div className="relative w-full max-w-[340px] aspect-[9/16] group/video [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent),linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [mask-composite:intersect] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent),linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [-webkit-mask-composite:source-in]">
           <ImageSequencePingPong 
             folderPath="/frames-scroll" 
             frameCount={120} 
-            className="w-full h-full object-cover md:blur-[0.5px] transform-gpu opacity-90 transition-transform duration-700 group-hover/video:scale-105" 
+            className="w-full h-full object-cover md:blur-[0.5px] transform-gpu opacity-80 transition-transform duration-700 group-hover/video:scale-105" 
           />
-          {/* Subtle overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-obsidian/40 via-transparent to-transparent pointer-events-none" />
-          
-          {/* Decorative Inner Border */}
-          <div className="absolute inset-3 border border-gold/5 rounded-xl pointer-events-none" />
+          {/* Subtle overlay gradient to deepen the bottom */}
+          <div className="absolute inset-0 bg-gradient-to-t from-obsidian/60 via-transparent to-transparent pointer-events-none" />
         </div>
       </div>
 

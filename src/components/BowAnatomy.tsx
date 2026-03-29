@@ -9,16 +9,17 @@ export default function BowAnatomy() {
       
       {/* Left Column: Video + Synergy Card */}
       <div className="w-full lg:w-[55%] xl:w-[60%] lg:sticky lg:top-24 lg:h-[calc(100vh-6rem)] flex flex-col items-center justify-center p-6 md:p-10 lg:p-12 xl:p-16 bg-obsidian border-b lg:border-b-0 lg:border-r border-charcoal/30 gap-5">
-        {/* Video Container */}
-        <FadeIn delay={0.1} direction="up" className="w-full max-w-2xl">
-          <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-charcoal/40 shadow-[0_20px_60px_rgba(0,0,0,0.7)] group/video">
+        {/* Video Container with Diffusion Blending */}
+        <FadeIn delay={0.1} direction="up" className="relative w-full max-w-2xl flex items-center justify-center">
+          {/* Subtle glow behind the animation */}
+          <div className="absolute w-[110%] h-[110%] bg-gold/5 blur-[80px] rounded-full pointer-events-none opacity-40 animate-pulse" />
+          
+          <div className="relative w-full aspect-video group/video [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent),linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [mask-composite:intersect] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent),linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [-webkit-mask-composite:source-in]">
             <ImageSequencePingPong 
               folderPath="/frames-anatomy"
               frameCount={96}
-              className="w-full h-full object-cover transform-gpu transition-transform duration-700 group-hover/video:scale-105"
+              className="w-full h-full object-cover transform-gpu transition-transform duration-700 group-hover/video:scale-105 opacity-90"
             />
-            {/* Decorative Inner Border */}
-            <div className="absolute inset-3 border border-gold/5 rounded-xl pointer-events-none" />
           </div>
         </FadeIn>
 

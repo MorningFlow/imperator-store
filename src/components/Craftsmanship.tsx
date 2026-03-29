@@ -24,8 +24,8 @@ export default function Craftsmanship() {
           <FadeIn delay={0.1} direction="left" className="flex items-start gap-6 border-b border-charcoal/50 pb-6 border-l-2 border-l-transparent hover:border-l-gold pl-4 transition-all duration-300">
             <span className="text-gold text-4xl font-serif leading-none shrink-0">01</span>
             <div>
-              <h3 className="text-offwhite text-sm font-bold tracking-widest uppercase mb-1 font-sans">Select Your Wood</h3>
-              <p className="text-offwhite/50 text-xs leading-relaxed">Choose from our curated selection of exotic hardwoods, including curly maple and Banksia pod veneers.</p>
+              <h3 className="text-offwhite text-sm font-bold tracking-widest uppercase mb-1 font-sans">Select Riser Blanks & Veneers</h3>
+              <p className="text-offwhite/50 text-xs leading-relaxed">Choose from our curated selection of exotic hardwoods to select riser blanks and veneers.</p>
             </div>
           </FadeIn>
 

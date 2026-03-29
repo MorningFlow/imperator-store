@@ -18,6 +18,17 @@ const cinzel = Cinzel({
 export const metadata: Metadata = {
   title: "Imperator Bows | Where Legacy Meets the Kill Shot",
   description: "Handcrafted bows that honor the tradition of the hunt. Premium Roman-inspired bows made in Texas.",
+  icons: {
+    icon: [
+      { url: "/favicon-96x96.png?v=1", sizes: "96x96", type: "image/png" },
+      { url: "/favicon.ico?v=1" },
+      { url: "/favicon.svg?v=1", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png?v=1", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/site.webmanifest?v=1",
 };
 
 export default function RootLayout({

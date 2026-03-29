@@ -1,72 +1,26 @@
 "use client";
 
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import Lightbox from "@/components/ui/Lightbox";
 
 const galleryImages = [
-  { src: "/gallery/whatsapp/workshop-10.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-11.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-12.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-13.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-14.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-15.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-16.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-17.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-18.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-19.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-2.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-20.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-21.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-22.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-23.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-24.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-25.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-26.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-27.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-28.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-29.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-3.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-30.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-31.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-32.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-33.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-34.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-35.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-36.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-37.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-38.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-39.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-4.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-40.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-41.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-42.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-43.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-44.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-45.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-46.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-47.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-48.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-49.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-5.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-50.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-51.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-52.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-53.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-54.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-55.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-56.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-57.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-6.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-7.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-8.jpg", title: "Workshop Detail", category: "Workshop" },
-  { src: "/gallery/whatsapp/workshop-9.jpg", title: "Workshop Detail", category: "Workshop" },
+  { src: "/gallery/new/gallery-1.jpg", title: "Limbs of Power", category: "Craftsmanship" },
+  { src: "/gallery/new/gallery-2.jpg", title: "The Archer's Grip", category: "Detail" },
+  { src: "/gallery/new/gallery-3.jpg", title: "Grain & Gold", category: "Materials" },
+  { src: "/gallery/new/gallery-4.jpg", title: "Handcrafted Riser", category: "Workshop" },
+  { src: "/gallery/new/gallery-5.jpg", title: "The Finish", category: "Craftsmanship" },
+  { src: "/gallery/new/gallery-6.jpg", title: "Forged Legend", category: "Archive" },
 ];
 
 export default function GalleryPage() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <>
       <Header />
@@ -95,28 +49,33 @@ export default function GalleryPage() {
                 direction="up" 
                 className="group relative aspect-[4/5] overflow-hidden rounded-xl border border-charcoal bg-obsidian-light"
               >
-                <Image 
-                  src={image.src} 
-                  alt={image.title} 
-                  fill 
-                  className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100"
-                />
-                
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
-                  <span className="text-gold text-[10px] font-bold tracking-[0.3em] uppercase mb-2">
-                    {image.category}
-                  </span>
-                  <h3 className="text-offwhite font-serif text-2xl uppercase tracking-widest">
-                    {image.title}
-                  </h3>
-                </div>
-                
-                {/* Corner Accents */}
-                <div className="absolute top-4 right-4 w-8 h-8 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute top-0 right-0 w-px h-full bg-gold/50" />
-                  <div className="absolute top-0 right-0 w-full h-px bg-gold/50" />
-                </div>
+                <button 
+                  onClick={() => setSelectedImage(image.src)}
+                  className="w-full h-full relative cursor-zoom-in"
+                >
+                  <Image 
+                    src={image.src} 
+                    alt={image.title} 
+                    fill 
+                    className="object-cover transition-all duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100"
+                  />
+                  
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
+                    <span className="text-gold text-[10px] font-bold tracking-[0.3em] uppercase mb-2">
+                      {image.category}
+                    </span>
+                    <h3 className="text-offwhite font-serif text-2xl uppercase tracking-widest text-left">
+                      {image.title}
+                    </h3>
+                  </div>
+                  
+                  {/* Corner Accents */}
+                  <div className="absolute top-4 right-4 w-8 h-8 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute top-0 right-0 w-px h-full bg-gold/50" />
+                    <div className="absolute top-0 right-0 w-full h-px bg-gold/50" />
+                  </div>
+                </button>
               </FadeIn>
             ))}
           </div>
@@ -135,6 +94,12 @@ export default function GalleryPage() {
         </div>
       </main>
       <Footer />
+
+      <Lightbox 
+        isOpen={!!selectedImage} 
+        imageSrc={selectedImage} 
+        onClose={() => setSelectedImage(null)} 
+      />
     </>
   );
 }

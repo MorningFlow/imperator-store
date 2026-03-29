@@ -15,16 +15,6 @@ const reasons = [
     text: "Spalted Tamarind. Kingwood. Osage Orange. We source rare exotic hardwoods globally — because what your bow is made of is part of the story you tell.",
   },
   {
-    icon: ShieldCheck,
-    title: "Lifetime Warranty. No Asterisks.",
-    text: "We back every bow for life because we built it to last one. If it fails, we fix it. Simple.",
-  },
-  {
-    icon: Crosshair,
-    title: "Precision That's Personal",
-    text: "Your draw length. Your grip. Your specs. The Imperator is engineered around you — not the average archer, not the catalog buyer. You.",
-  },
-  {
     icon: Medal,
     title: "Veteran-Owned. Texas-Forged.",
     text: "Built by hands that know what accountability means. Every commission is a reflection of that standard.",
@@ -170,6 +160,9 @@ export default function WhyImperator() {
 
         {/* ─── RIGHT: Video (1/3) ─── */}
         <div className="relative w-full lg:w-1/3 flex items-center justify-center p-6 md:p-12 bg-obsidian">
+          {/* Glow effect behind the video */}
+          <div className="absolute w-[120%] h-[120%] bg-gold/5 blur-[100px] rounded-full pointer-events-none opacity-40 animate-pulse" />
+          
           <motion.div 
             initial={{ opacity: 0, scale: 0.9, x: 20 }}
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
@@ -179,11 +172,11 @@ export default function WhyImperator() {
               ease: [0.16, 1, 0.3, 1], 
               delay: 0.4 
             }}
-            className="relative w-full max-w-[380px] rounded-2xl overflow-hidden border border-charcoal/40 shadow-[0_20px_60px_rgba(0,0,0,0.7)] group/video"
+            className="relative w-full max-w-[380px] group/video [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent),linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [mask-composite:intersect] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent),linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [-webkit-mask-composite:source-in]"
           >
             <video
               src="/legal-video.mp4"
-              className="w-full h-auto object-cover transition-transform duration-700 group-hover/video:scale-[1.03] blur-[0.5px]"
+              className="w-full h-auto object-cover transition-transform duration-700 group-hover/video:scale-[1.03] blur-[0.5px] opacity-90"
               autoPlay
               muted
               loop
@@ -192,10 +185,7 @@ export default function WhyImperator() {
             {/* Dark overlay */}
             <div className="absolute inset-0 bg-obsidian/20 pointer-events-none" />
             {/* Subtle overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-obsidian/30 via-transparent to-transparent pointer-events-none" />
-
-            {/* Decorative Inner Border */}
-            <div className="absolute inset-3 border border-gold/5 rounded-xl pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-obsidian/40 via-transparent to-transparent pointer-events-none" />
           </motion.div>
         </div>
       </div>

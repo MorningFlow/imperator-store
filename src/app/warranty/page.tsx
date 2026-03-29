@@ -18,17 +18,22 @@ export default function WarrantyPage() {
             <p><strong>Applies To:</strong> Original Purchaser Only</p>
           </div>
 
-          {/* Video float + wraparound text */}
+          {/* Video float + wraparound text with Diffusion Blending */}
           <div className="clearfix">
-            <div className="float-left mr-8 mb-6 w-full sm:w-[300px] md:w-[340px] lg:w-[380px] rounded-lg overflow-hidden border border-charcoal/40 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-              <video
-                src="/warranty-video.mp4"
-                className="w-full h-auto object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
+            <div className="float-left relative mr-8 mb-6 w-full sm:w-[300px] md:w-[340px] lg:w-[380px] group/video flex items-center justify-center">
+              {/* Glow behind the video */}
+              <div className="absolute w-[110%] h-[110%] bg-gold/5 blur-[80px] rounded-full pointer-events-none opacity-40 animate-pulse" />
+              
+              <div className="relative w-full [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent),linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [mask-composite:intersect] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent),linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] [-webkit-mask-composite:source-in]">
+                <video
+                  src="/warranty-video-v2.mp4"
+                  className="w-full h-auto object-cover opacity-90"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
+              </div>
             </div>
 
             <section className="space-y-6 mb-12">
