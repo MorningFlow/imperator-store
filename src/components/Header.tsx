@@ -41,6 +41,7 @@ export default function Header() {
     { name: "Gallery", href: "/gallery" },
     { name: "Craftsmanship", href: "#craftsmanship" },
     { name: "Our Heritage", href: "#heritage" },
+    { name: "The Difference", href: "#why-imperator" },
     { name: "Testimonials", href: "#testimonials" },
   ];
 
@@ -137,7 +138,7 @@ export default function Header() {
 
           {/* Desktop Navigation (Right) */}
           <nav className="hidden md:flex flex-1 justify-start items-center gap-6 lg:gap-10 ml-6 lg:ml-16">
-            {navLinks.slice(4, 7).map((link) => (
+            {navLinks.slice(4, 8).map((link) => (
               <a
                 key={link.name}
                 href={link.href}

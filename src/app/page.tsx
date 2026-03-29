@@ -5,6 +5,7 @@ import WoodUSP from "@/components/WoodUSP";
 import Collection from "@/components/Collection";
 import Craftsmanship from "@/components/Craftsmanship";
 import Heritage from "@/components/Heritage";
+import WhyImperator from "@/components/WhyImperator";
 import Testimonials from "@/components/Testimonials";
 import FinalCTA from "@/components/FinalCTA";
 import ImageSequencePingPong from "@/components/ImageSequencePingPong";
@@ -104,6 +105,7 @@ export default function Home() {
         <Collection />
         <Craftsmanship />
         <Heritage />
+        <WhyImperator />
         <Testimonials />
         <FinalCTA />
       </main>
