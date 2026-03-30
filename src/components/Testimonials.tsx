@@ -1,6 +1,7 @@
+"use client";
+
 import { ClientsSection, Testimonial } from "@/components/ui/testimonial-card";
-
-
+import { useBuildModal } from "@/context/BuildModalContext";
 
 const testimonialsData: Testimonial[] = [
   {
@@ -30,6 +31,15 @@ const testimonialsData: Testimonial[] = [
 ];
 
 export default function Testimonials() {
+  const { openBuildModal } = useBuildModal();
+
+  const handleExplore = () => {
+    const elem = document.getElementById("collection");
+    if (elem) {
+      elem.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div id="testimonials" className="bg-obsidian w-full pt-28 pb-16 scroll-mt-24">
       <ClientsSection
@@ -41,6 +51,8 @@ export default function Testimonials() {
         testimonials={testimonialsData}
         primaryActionLabel="Order Your Bow"
         secondaryActionLabel="Explore Collection"
+        onPrimaryAction={() => openBuildModal()}
+        onSecondaryAction={handleExplore}
       />
     </div>
   );

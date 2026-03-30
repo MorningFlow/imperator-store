@@ -4,26 +4,31 @@ import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import FadeIn from "./FadeIn";
 import Lightbox from "./ui/Lightbox";
+import QuizModal from "./QuizModal";
+import { Sparkles } from "lucide-react";
 
 import { useBuildModal } from "@/context/BuildModalContext";
 
 export default function Collection() {
-  const { openBuildModal } = useBuildModal();
+  const { openBuildModal, isQuizOpen, setIsQuizOpen } = useBuildModal();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <section id="collection" className="wood-grain-bg bg-obsidian py-24 px-6 relative border-t border-charcoal/30">
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-charcoal/20 to-transparent pointer-events-none z-[1]" />
 
-      <FadeIn className="text-center mb-16 relative z-10">
+      <FadeIn className="text-center mb-10 relative z-10 max-w-2xl mx-auto">
         <h4 className="text-offwhite/40 text-xs font-bold tracking-[0.2em] font-sans mb-3 uppercase">Products</h4>
         <p className="text-gold-light text-xs font-semibold tracking-widest font-sans mb-2 uppercase">The Collection</p>
-        <h2 className="font-serif text-3xl sm:text-4xl text-offwhite leading-tight">Three Models. Zero Compromises.</h2>
+        <h2 className="font-serif text-3xl sm:text-4xl text-offwhite leading-tight mb-8">Three Models. Zero Compromises.</h2>
+        
+
       </FadeIn>
 
-      <div className="flex justify-center mx-auto max-w-6xl relative z-10">
+      <div className="mx-auto max-w-6xl relative z-10">
         <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 px-4 w-full scrollbar-none items-stretch">
           
           {/* Card 1: Aquila Recurve */}
@@ -38,7 +43,7 @@ export default function Collection() {
               
               <div className="flex items-center justify-end mt-auto pt-4">
                 <button 
-                  onClick={() => openBuildModal()}
+                  onClick={() => openBuildModal(undefined, "Aquila Recurve")}
                   className="flex items-center gap-1.5 bg-gradient-to-r from-gold-light to-gold text-obsidian font-bold px-4 py-2 rounded text-[10px] tracking-wider hover:opacity-90 transition-opacity uppercase"
                 >
                   Reserve <ArrowRight className="w-3 h-3" />
@@ -59,7 +64,7 @@ export default function Collection() {
               
               <div className="flex items-center justify-end mt-auto pt-4">
                 <button 
-                  onClick={() => openBuildModal()}
+                  onClick={() => openBuildModal(undefined, "Praetorian Longbow")}
                   className="flex items-center gap-1.5 bg-gradient-to-r from-gold-light to-gold text-obsidian font-bold px-4 py-2 rounded text-[10px] tracking-wider hover:opacity-90 transition-opacity uppercase"
                 >
                   Reserve <ArrowRight className="w-3 h-3" />
@@ -98,10 +103,26 @@ export default function Collection() {
           </FadeIn>
 
         </div>
+
+        {/* Redesigned Quiz CTA - Minimalist & Elegant */}
+        <FadeIn delay={0.4} direction="up" className="mt-24 mb-16 flex flex-col items-center text-center px-4">
+          <div className="flex flex-col items-center max-w-sm">
+            <h3 className="text-offwhite/80 font-serif text-lg mb-6 tracking-[0.1em] uppercase">Need guidance?</h3>
+            <p className="text-offwhite/40 text-[10px] font-sans mb-8 leading-relaxed uppercase tracking-[0.2em] max-w-[280px]">Take the experience quiz to find your perfect heirloom.</p>
+            
+            <button 
+              onClick={() => setIsQuizOpen(true)}
+              className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold px-7 py-3.5 rounded-sm uppercase text-[11px] tracking-[0.15em] shadow-[0_4px_24px_rgba(174,145,66,0.25)] hover:shadow-[0_6px_32px_rgba(174,145,66,0.45)] hover:brightness-110 transition-all duration-300 active:scale-[0.98]"
+            >
+              <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+              <span>Find Your Match</span>
+            </button>
+          </div>
+        </FadeIn>
       </div>
       
       {/* Gallery Preview Section */}
-      <div className="mt-24 max-w-6xl mx-auto border-t border-charcoal/30 pt-16 relative z-10">
+      <div className="mt-32 max-w-6xl mx-auto border-t border-charcoal/30 pt-20 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
           <div className="text-left">
             <h4 className="text-gold text-xs font-bold tracking-[0.2em] font-sans mb-3 uppercase">Visual Heritage</h4>
@@ -142,6 +163,9 @@ export default function Collection() {
         imageSrc={selectedImage} 
         onClose={() => setSelectedImage(null)} 
       />
+
+      {/* Guided Selling Quiz Modal */}
+      <QuizModal isOpen={isQuizOpen} onClose={() => setIsQuizOpen(false)} />
     </section>
   );
 }

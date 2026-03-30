@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Star } from "lucide-react";
+import { Check, Star, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import FadeIn from "./FadeIn";
 import { useBuildModal } from "@/context/BuildModalContext";
@@ -62,9 +62,15 @@ export default function Pricing() {
         <FadeIn className="text-center mb-16">
           <h4 className="text-gold text-xs font-bold tracking-[0.2em] font-sans mb-3 uppercase">Investment</h4>
           <h2 className="font-serif text-3xl md:text-5xl text-offwhite uppercase tracking-wider mb-4">Pricing & Tiers</h2>
-          <p className="text-offwhite/50 text-sm max-w-2xl mx-auto font-sans">
+          <p className="text-offwhite/50 text-sm max-w-2xl mx-auto font-sans mb-6">
             Choose the foundation of your legacy. Each build is a unique commission, crafted from the finest materials.
           </p>
+          <div className="mx-auto bg-charcoal/40 border border-gold/20 rounded py-2 px-4 inline-flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-gold animate-pulse shadow-[0_0_10px_rgba(174,145,66,0.8)]" />
+            <p className="text-gold-light text-xs font-bold font-sans uppercase tracking-[0.1em]">
+              Only 3 slots remaining for {new Date().toLocaleString('default', { month: 'long' })}
+            </p>
+          </div>
         </FadeIn>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
@@ -104,7 +110,7 @@ export default function Pricing() {
               </div>
 
               <button
-                onClick={() => openBuildModal(tier.budgetRef)}
+                onClick={() => openBuildModal(tier.budgetRef, tier.name)}
                 className={cn(
                   "w-full py-4 rounded-sm transition-all text-[10px] font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2",
                   tier.featured
@@ -117,6 +123,30 @@ export default function Pricing() {
             </FadeIn>
           ))}
         </div>
+
+        {/* Risk Reversal: Ironclad Guarantee */}
+        <FadeIn className="mt-20 max-w-3xl mx-auto">
+          <div className="bg-gradient-to-b from-charcoal/40 to-obsidian border border-gold/20 rounded-lg p-8 md:p-12 relative overflow-hidden group hover:border-gold/40 transition-colors">
+            {/* Subtle background glow */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-gold/5 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            
+            <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-6 text-center md:text-left">
+              <div className="w-16 h-16 shrink-0 bg-gold/10 rounded-full flex items-center justify-center border border-gold/30 shadow-[0_0_30px_rgba(174,145,66,0.15)] group-hover:shadow-[0_0_40px_rgba(174,145,66,0.3)] transition-shadow">
+                <ShieldCheck className="w-8 h-8 text-gold" />
+              </div>
+              <div>
+                <h3 className="text-xl font-serif text-gold-light mb-2">The Ironclad Lifetime Guarantee</h3>
+                <p className="text-offwhite/70 text-sm leading-relaxed font-sans mb-4">
+                  When you commission an Imperator Bow, you are investing in a legacy. We stand behind our craftsmanship unconditionally. If your bow ever fails due to a defect in materials or artisanship, we will repair or replace it—no questions asked. 
+                </p>
+                <div className="inline-flex items-center gap-2 bg-gold/10 px-3 py-1.5 rounded-sm border border-gold/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                  <span className="text-[10px] text-gold uppercase tracking-widest font-bold">100% Fully Transferable to Heirs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
       </div>
 
       {/* Background Decor */}

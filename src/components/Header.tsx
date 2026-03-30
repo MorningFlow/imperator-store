@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useBuildModal } from "@/context/BuildModalContext";
@@ -38,13 +39,20 @@ export default function Header() {
 
   const navLinks = [
     { name: "The Collection", href: "#collection" },
+    { name: "The Craft", href: "#anatomy" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Investment", href: "#pricing" },
+  ];
+
+  const sidebarLinks = [
+    { name: "Collection", href: "#collection" },
     { name: "Anatomy", href: "#anatomy" },
     { name: "Materials", href: "#materials" },
+    { name: "Pricing", href: "#pricing" },
     { name: "Gallery", href: "/gallery" },
     { name: "Craftsmanship", href: "#craftsmanship" },
-    { name: "Our Heritage", href: "#heritage" },
-    { name: "The Difference", href: "#why-imperator" },
-    { name: "Testimonials", href: "#testimonials" },
+    { name: "Heritage", href: "#heritage" },
+    { name: "Difference", href: "#why-imperator" },
   ];
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -78,32 +86,47 @@ export default function Header() {
     }
   };
 
+  const { isOpen: isBuildModalOpen, isQuizOpen } = useBuildModal();
+  const isAnyModalActive = isBuildModalOpen || isQuizOpen;
+
   return (
     <>
       <header 
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-          isScrolled ? "py-4 md:py-6" : "py-0"
+          isScrolled ? "py-4 md:py-6" : "py-0",
+          isAnyModalActive ? "opacity-0 pointer-events-none -translate-y-full" : "opacity-100"
         )}
       >
         <div className={cn(
-          "flex items-center justify-center px-4 md:px-8 transition-all duration-500 relative mx-auto",
+          "flex items-center justify-center px-6 md:px-12 lg:px-16 transition-all duration-500 relative mx-auto",
           isScrolled 
-            ? "max-w-[95%] md:max-w-[1100px] lg:max-w-[1240px] bg-obsidian/30 backdrop-blur-xl border border-white/10 rounded-full py-3 md:py-4 mt-2 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]" 
+            ? "max-w-fit bg-obsidian-dark/40 backdrop-blur-2xl border border-white/10 rounded-full py-3 px-10 mt-2 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]" 
             : "w-full max-w-full bg-obsidian/85 backdrop-blur-md border-b border-charcoal/30 py-4 md:py-6"
         )}>
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setIsOpen(true)}
-            className="text-offwhite hover:text-gold transition-colors md:hidden absolute left-8" 
+            className="text-offwhite hover:text-gold transition-colors lg:hidden absolute left-5 md:left-8" 
             aria-label="Menu"
           >
             <Menu className="w-5 h-5" />
           </button>
+
+          {/* Mobile Sticky CTA */}
+          <button 
+            onClick={() => openBuildModal()}
+            className={cn(
+              "lg:hidden absolute right-5 md:right-8 bg-gradient-to-r from-gold-light to-gold text-obsidian px-4 py-1.5 text-[9px] font-bold uppercase tracking-widest rounded-full transition-all duration-300 shadow-[0_4px_15px_rgba(174,145,66,0.3)]",
+              isScrolled ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"
+            )}
+          >
+            Build Slot
+          </button>
           
           {/* Desktop Navigation (Left) */}
-          <nav className="hidden md:flex flex-1 justify-end items-center gap-6 lg:gap-10 mr-6 lg:mr-16">
-            {navLinks.slice(0, 4).map((link) => (
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-14">
+            {navLinks.slice(0, 2).map((link) => (
               <a
                 key={link.name}
                 href={link.href}
@@ -116,8 +139,8 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Logo */}
-          <div className="flex-shrink-0 flex justify-center z-10">
+          {/* Logo (Direct Flex Child to prevent overlap) */}
+          <div className="mx-8 xl:mx-14 flex shrink-0 items-center justify-center">
             <Link 
               href="/" 
               className="flex items-center" 
@@ -134,28 +157,63 @@ export default function Header() {
                 alt="Imperator Bows Logo" 
                 width={200} 
                 height={60} 
-                className="h-9 md:h-12 w-auto object-contain drop-shadow" 
+                className="h-8 md:h-10 lg:h-12 w-auto object-contain drop-shadow" 
                 priority
               />
             </Link>
           </div>
 
           {/* Desktop Navigation (Right) */}
-          <nav className="hidden md:flex flex-1 justify-start items-center gap-6 lg:gap-10 ml-6 lg:ml-16">
-            {navLinks.slice(4, 8).map((link) => (
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-14 overflow-visible">
+            {navLinks.slice(2, 4).map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleScroll(e, link.href)}
-                className="text-[10px] font-sans font-semibold uppercase tracking-[0.25em] text-offwhite/70 hover:text-gold transition-colors relative group py-1"
+                className="text-[10px] font-sans font-semibold uppercase tracking-[0.25em] text-offwhite/70 hover:text-gold transition-colors relative group py-1 whitespace-nowrap"
               >
                 {link.name}
                 <span className="absolute bottom-0 left-1/2 w-0 h-[1px] bg-gold group-hover:w-full group-hover:left-0 transition-all duration-300 ease-in-out"></span>
               </a>
             ))}
           </nav>
+
+          {/* Sticky CTA moved out of header flow to a floating position below */}
         </div>
       </header>
+
+      {/* NEW: Floating 'Reserve Slot' CTA - Simple & Elegant */}
+      <AnimatePresence>
+        {isScrolled && !isAnyModalActive && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, x: 20 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1, 
+              x: 0,
+            }}
+            exit={{ opacity: 0, scale: 0.9, x: 20 }}
+            className="fixed bottom-10 right-8 z-[100] hidden lg:block"
+          >
+            <button 
+              onClick={() => openBuildModal()} 
+              className="group relative flex items-center gap-4 bg-obsidian border border-gold/30 hover:border-gold px-8 py-4 rounded-full transition-all duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_40px_rgba(174,145,66,0.2)] active:scale-95 animate-[float_4s_ease-in-out_infinite]"
+            >
+              <div className="flex flex-col items-start text-left">
+                <span className="text-gold-light text-[8px] font-bold uppercase tracking-[0.4em] mb-0.5 opacity-70">Secured Reservation</span>
+                <span className="text-offwhite text-xs font-serif tracking-widest uppercase">Reserve Now</span>
+              </div>
+
+              <div className="w-8 h-8 rounded-full border border-gold/20 flex items-center justify-center group-hover:bg-gold transition-all duration-500">
+                <ArrowRight className="w-4 h-4 text-gold group-hover:text-obsidian transition-colors" />
+              </div>
+
+              {/* Subtle inner glow on hover */}
+              <div className="absolute inset-0 rounded-full bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Sidebar Overlay */}
       <div 
@@ -201,7 +259,7 @@ export default function Header() {
           </div>
 
           <div className="flex flex-col gap-6 mt-4 flex-1">
-            {navLinks.map((link, index) => (
+            {sidebarLinks.map((link, index) => (
               <a
                 key={link.name}
                 href={link.href}

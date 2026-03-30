@@ -9,8 +9,9 @@ import Heritage from "@/components/Heritage";
 import WhyImperator from "@/components/WhyImperator";
 import Testimonials from "@/components/Testimonials";
 import FinalCTA from "@/components/FinalCTA";
+import FAQ from "@/components/FAQ";
 import ImageSequencePingPong from "@/components/ImageSequencePingPong";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { CheckCircle2, ArrowRight, Star } from "lucide-react";
 
 export default function Home() {
   return (
@@ -78,12 +79,27 @@ export default function Home() {
             </p>
 
             {/* CTA Button */}
-            <a
-              href="#collection"
-              className="inline-flex items-center gap-2.5 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold px-7 py-3.5 rounded-sm uppercase text-[11px] tracking-[0.15em] w-fit mb-10 shadow-[0_4px_24px_rgba(174,145,66,0.25)] hover:shadow-[0_6px_32px_rgba(174,145,66,0.45)] hover:brightness-110 transition-all duration-300 active:scale-[0.98]"
-            >
-              Build Your Heirloom <ArrowRight className="w-4 h-4" />
-            </a>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-10">
+              <a
+                href="#collection"
+                className="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold px-7 py-3.5 rounded-sm uppercase text-[11px] tracking-[0.15em] shrink-0 shadow-[0_4px_24px_rgba(174,145,66,0.25)] hover:shadow-[0_6px_32px_rgba(174,145,66,0.45)] hover:brightness-110 transition-all duration-300 active:scale-[0.98]"
+              >
+                Build Your Heirloom <ArrowRight className="w-4 h-4" />
+              </a>
+              
+              {/* Micro-Review Trust Signal */}
+              <div className="flex flex-col items-start gap-1">
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3 h-3 text-gold fill-gold" />
+                  ))}
+                </div>
+                <p className="text-[10px] text-offwhite/70 font-sans tracking-wide">
+                  <span className="font-bold text-offwhite">"A true masterpiece."</span><br />
+                  - Rated 5.0 by 500+ Hunters
+                </p>
+              </div>
+            </div>
 
             {/* Trust Badges */}
             <div className="flex flex-col gap-3">
@@ -109,6 +125,7 @@ export default function Home() {
         <Heritage />
         <WhyImperator />
         <Testimonials />
+        <FAQ />
         <FinalCTA />
       </main>
       <Footer />

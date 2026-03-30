@@ -95,15 +95,22 @@ export default function FinalCTA() {
             <p className="text-offwhite/50 text-[10px]">Tuned to your exact specs.</p>
           </div>
         </div>
+        
+        <div className="mb-6 mx-auto bg-charcoal/40 border border-gold/20 rounded py-2 px-4 inline-flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-gold animate-pulse shadow-[0_0_10px_rgba(174,145,66,0.8)]" />
+          <p className="text-gold-light text-xs font-bold font-sans uppercase tracking-[0.1em]">
+            Only 3 slots remaining for {new Date().toLocaleString('default', { month: 'long' })}
+          </p>
+        </div>
 
         <button 
           onClick={() => openBuildModal()}
-          className="flex items-center justify-center gap-2 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold px-8 py-4 rounded uppercase text-sm tracking-wider w-full shadow-[0_10px_30px_rgba(174,145,66,0.25)] hover:shadow-[0_10px_40px_rgba(174,145,66,0.4)] transition-all active:scale-[0.98] mx-auto sm:w-3/4 mb-4"
+          className="flex items-center justify-center gap-2 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-obsidian font-bold px-8 py-4 rounded-sm uppercase text-sm tracking-widest w-full shadow-[0_10px_30px_rgba(174,145,66,0.25)] hover:shadow-[0_10px_40px_rgba(174,145,66,0.4)] transition-all active:scale-[0.98] mx-auto sm:w-3/4 mb-4 group"
         >
-          <Crosshair className="w-4 h-4 font-bold" /> CLAIM YOUR BUILD SLOT NOW
+          <Crosshair className="w-4 h-4 font-bold group-hover:scale-110 transition-transform" /> CLAIM YOUR BUILD SLOT
         </button>
-        <p className="text-offwhite/40 text-[10px] uppercase tracking-widest font-sans mt-2">
-          Subject to current waitlist times.
+        <p className="text-offwhite/40 text-[10px] uppercase tracking-[0.2em] font-sans mt-2">
+          Waitlist times currently 8-12 weeks.
         </p>
       </div>
     </section>

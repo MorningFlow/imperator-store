@@ -25,8 +25,8 @@ export default function LoadingScreen() {
               initial={{ y: 100, opacity: 0, rotateX: -90 }}
               animate={{ y: 0, opacity: 1, rotateX: 0 }}
               transition={{
-                duration: 1,
-                delay: index * 0.08,
+                duration: 1.4,
+                delay: index * 0.15,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-gold-light tracking-[-0.05em] drop-shadow-[0_10px_30px_rgba(174,145,66,0.3)]"
@@ -40,7 +40,7 @@ export default function LoadingScreen() {
         <motion.div
           initial={{ scaleX: 0, opacity: 0 }}
           animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.8, ease: "circOut" }}
+          transition={{ duration: 1.8, delay: 1.5, ease: "circOut" }}
           className="h-[1px] w-48 sm:w-64 md:w-80 bg-gradient-to-r from-transparent via-gold to-transparent mt-6"
         />
         
@@ -48,7 +48,7 @@ export default function LoadingScreen() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 0.5, y: 0 }}
-          transition={{ duration: 1, delay: 1.2 }}
+          transition={{ duration: 1.5, delay: 2.2 }}
           className="mt-8 flex items-center gap-4"
         >
           <div className="h-[1px] w-8 bg-gold/30" />

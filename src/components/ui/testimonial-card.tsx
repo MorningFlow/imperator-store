@@ -32,6 +32,8 @@ export interface ClientsSectionProps {
   testimonials: Testimonial[];
   primaryActionLabel: string;
   secondaryActionLabel: string;
+  onPrimaryAction?: () => void;
+  onSecondaryAction?: () => void;
   className?: string;
 }
 
@@ -119,6 +121,8 @@ export const ClientsSection = ({
   testimonials,
   primaryActionLabel,
   secondaryActionLabel,
+  onPrimaryAction,
+  onSecondaryAction,
   className,
 }: ClientsSectionProps) => {
   // Calculate a height for the scroll container to ensure all cards can stack
@@ -145,8 +149,21 @@ export const ClientsSection = ({
             </div>
           )}
           <div className="flex flex-wrap items-center gap-4 mt-6">
-            <Button variant="outline" size="lg" className="rounded border-gold/50 text-gold hover:bg-gold/10 hover:text-gold-light transition-colors uppercase font-bold tracking-wider">{secondaryActionLabel}</Button>
-            <Button size="lg" className="rounded bg-gradient-to-r from-gold-light to-gold text-obsidian hover:shadow-[0_0_15px_rgba(174,145,66,0.4)] transition-all font-bold uppercase tracking-wider">{primaryActionLabel}</Button>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              onClick={onSecondaryAction}
+              className="rounded border-gold/50 text-gold hover:bg-gold/10 hover:text-gold-light transition-colors uppercase font-bold tracking-wider"
+            >
+              {secondaryActionLabel}
+            </Button>
+            <Button 
+              size="lg" 
+              onClick={onPrimaryAction}
+              className="rounded bg-gradient-to-r from-gold-light to-gold text-obsidian hover:shadow-[0_0_15px_rgba(174,145,66,0.4)] transition-all font-bold uppercase tracking-wider"
+            >
+              {primaryActionLabel}
+            </Button>
           </div>
         </div>
 
