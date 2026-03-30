@@ -67,18 +67,48 @@ export default function QuizModal({ isOpen, onClose }: { isOpen: boolean; onClos
   const calculateResult = () => {
     setIsCalculating(true);
     
-    // Simple logic for recommendation based on answers
+    // Weighted Scoring Logic for Authentic Experience
     setTimeout(() => {
-      let resultModel = "Praetorian"; // Default
+      const scores = {
+        aquila: 0,
+        praetorian: 0,
+        centurion: 0
+      };
+
+      // 1. Primary Application
+      if (answers.use === "hunting") scores.aquila += 2;
+      if (answers.use === "target") scores.centurion += 2;
+      if (answers.use === "both") scores.praetorian += 2;
+
+      // 2. Archer Experience Level
+      if (answers.experience === "beginner") scores.praetorian += 2;
+      if (answers.experience === "seasoned") {
+        scores.aquila += 1;
+        scores.centurion += 1;
+      }
+      if (answers.experience === "master") {
+        scores.centurion += 2;
+        scores.aquila += 1;
+      }
+
+      // 3. User Preference / Philosphy
+      if (answers.preference === "aquila") scores.aquila += 3;
+      if (answers.preference === "praetorian") scores.praetorian += 3;
+      if (answers.preference === "centurion") scores.centurion += 3;
+
+      // Determine Winner
+      let resultModel = "Praetorian"; // Default fallback
       
-      if (answers.use === "hunting" && answers.preference === "aquila") resultModel = "Aquila Recurve";
-      if (answers.use === "target" && answers.preference === "centurion") resultModel = "Centurion Static Recurve";
-      if (answers.use === "both") resultModel = "Praetorian";
+      const maxScore = Math.max(scores.aquila, scores.praetorian, scores.centurion);
+      
+      if (scores.aquila === maxScore && scores.aquila > 0) resultModel = "Aquila Recurve";
+      else if (scores.centurion === maxScore && scores.centurion > 0) resultModel = "Centurion Static Recurve";
+      else resultModel = "Praetorian";
 
       setRecommendedModel(resultModel);
       setIsCalculating(false);
       setHasResult(true);
-    }, 1500); // Fake calculating delay for premium feel
+    }, 1500); // Cinematic calculating delay
   };
 
   const handleReserve = () => {
